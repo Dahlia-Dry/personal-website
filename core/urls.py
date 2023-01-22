@@ -14,4 +14,4 @@ urlpatterns = [
     path('outside/',views.outside,name='outside'),
     path('busy/',views.busy,name='busy'),
     path('looking-for-a-job/',views.job,name='job')
-]
+] 
