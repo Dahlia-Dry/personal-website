@@ -5,7 +5,7 @@ def home(request):
     return render(request,'here.html')
 
 def currently(request):
-    return render(request,'base.html',{'header_name':'dahlia.is/currently'})
+    return render(request,'base_diff.html',{'header_name':'dahlia.is/currently'})
 
 def zoomin(request):
     return render(request,'base.html',{'header_name':'dahlia.is/zoomin'})
