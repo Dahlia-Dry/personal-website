@@ -60,7 +60,7 @@ tile3.onmouseout = function () {
 tile4.onmouseover = function () {
     header.innerHTML = "dahlia.is/thinking";
     arrow4.style.opacity = 1;
-    tile4.style.backgroundImage = "url('/static/media/82349A5F-C38C-42E1-86E5-3ECE762EFDED 2.JPG')";
+    tile4.style.backgroundImage = "url('/static/media/82349A5F-C38C-42E1-86E5-3ECE762EFDED 2.jpg')";
 }
 
 tile4.onmouseout = function () {
@@ -84,7 +84,7 @@ tile4.onmouseout = function () {
 tile6.onmouseover = function () {
     header.innerHTML = "dahlia.is/lost-in-space";
     arrow6.style.opacity = 1;
-    tile6.style.backgroundImage = "url('/static/media/m27-colorized-sharpened 2.JPG')";
+    tile6.style.backgroundImage = "url('/static/media/m27-colorized-sharpened 2.jpg')";
 }
 
 tile6.onmouseout = function () {
