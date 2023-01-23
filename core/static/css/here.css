@@ -134,7 +134,7 @@
         padding: 0 10px;
       } 
   .u-section-2 .u-image-2 {
-  background-image: url("/static/media/IMG_3947.jpg");
+  background-image: url("/static/media/IMG_0631.png");
     min-height: 402px;
     background-position: 50% 50%;
   transition: 0.5s;
@@ -171,13 +171,13 @@
     padding: 20px 0;
   }
   
-  .u-section-2 .u-image-5 {
+  /* .u-section-2 .u-image-5 {
   background-image: url("/static/media/IMG_0631.png");
   min-height: 402px;
     background-position: 50% 50%;
   transition: 0.5s;
   transform: translateX(0px) translateY(0px) scale(1) rotate(0deg);
-  }
+  } */
   
   .u-section-2 .u-container-layout-5 {
     padding: 24px 0;

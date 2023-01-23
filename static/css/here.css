@@ -128,7 +128,7 @@
 
 
 .u-section-2 .u-image-1 {
-  background-image: url("/static/media/IMG_0475.JPG");
+  background-image: url("static/media/IMG_0475.JPG");
   min-height: 402px;
   background-position: 50% 50%;
   transition: 0.5s;
