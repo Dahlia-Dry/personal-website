@@ -9,7 +9,6 @@ urlpatterns = [
     path('taking-notes/',views.notes,name='notes'),
     path('in-new-places/',views.places,name='places'),
     path('thinking/',views.thinking,name='thinking'),
-    path('lost-in-space/',views.space,name='space'),
     path('outside/',views.outside,name='outside'),
     path('busy/',views.busy,name='busy'),
     path('employable/',views.job,name='job')
