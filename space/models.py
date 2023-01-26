@@ -10,7 +10,7 @@ class astro_photo(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     caption = models.TextField()
     photo = models.ImageField(upload_to ='space/')
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_on = models.DateField()
     status = models.IntegerField(choices=STATUS, default=0)
 
     class Meta:

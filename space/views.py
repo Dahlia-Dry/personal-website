@@ -18,5 +18,5 @@ class photo_list(generic.ListView):
 
 # Create your views here.
 def space(request):
-    return render(request,'lost-in-space.html',{'header_content':'dahlia.is/lost-in-space'})
+    return render(request,'space-diff.html',{'header_content':'dahlia.is/lost-in-space'})
 

@@ -9,8 +9,8 @@ const arrow3 = document.getElementById("arrow3");
 
 const tile4 = document.getElementById("tile4");
 const arrow4 = document.getElementById("arrow4");
-const tile5 = document.getElementById("tile5");
-const arrow5 = document.getElementById("arrow5");
+// const tile5 = document.getElementById("tile5");
+// const arrow5 = document.getElementById("arrow5");
 const tile6 = document.getElementById("tile6");
 const arrow6 = document.getElementById("arrow6");
 
@@ -34,15 +34,15 @@ tile1.onmouseout = function () {
 }
 
 tile2.onmouseover = function () {
-    header.innerHTML = "dahlia.is/zoomin";
+    header.innerHTML = "dahlia.is/taking-notes";
     arrow2.style.opacity = 1;
-    tile2.style.backgroundImage = "url('/static/media/IMG_3947 2.jpg')";
+    tile2.style.backgroundImage ="url('/static/media/IMG_0631 2.png')";
 }
 
 tile2.onmouseout = function () {
     header.innerHTML = "dahlia.is/here";
     arrow2.style.opacity = 0;
-    tile2.style.backgroundImage = "url('/static/media/IMG_3947.jpg')";
+    tile2.style.backgroundImage = "url('/static/media/IMG_0631.png')";
 }
 
 tile3.onmouseover = function () {
@@ -60,7 +60,7 @@ tile3.onmouseout = function () {
 tile4.onmouseover = function () {
     header.innerHTML = "dahlia.is/thinking";
     arrow4.style.opacity = 1;
-    tile4.style.backgroundImage = "url('/static/media/82349A5F-C38C-42E1-86E5-3ECE762EFDED 2.JPG')";
+    tile4.style.backgroundImage = "url('/static/media/82349A5F-C38C-42E1-86E5-3ECE762EFDED 2.jpg')";
 }
 
 tile4.onmouseout = function () {
@@ -69,22 +69,22 @@ tile4.onmouseout = function () {
     tile4.style.backgroundImage = "url('/static/media/82349A5F-C38C-42E1-86E5-3ECE762EFDED.JPG')";
 }
 
-tile5.onmouseover = function () {
-    header.innerHTML = "dahlia.is/learning";
-    arrow5.style.opacity = 1;
-    tile5.style.backgroundImage =  "url('/static/media/IMG_0631 2.png')";
-}
+// tile5.onmouseover = function () {
+//     header.innerHTML = "dahlia.is/learning";
+//     arrow5.style.opacity = 1;
+//     tile5.style.backgroundImage =  "url('/static/media/IMG_0631 2.png')";
+// }
 
-tile5.onmouseout = function () {
-    header.innerHTML = "dahlia.is/here";
-    arrow5.style.opacity = 0;
-    tile5.style.backgroundImage = "url('/static/media/IMG_0631.png')";
-}
+// tile5.onmouseout = function () {
+//     header.innerHTML = "dahlia.is/here";
+//     arrow5.style.opacity = 0;
+//     tile5.style.backgroundImage = "url('/static/media/IMG_0631.png')";
+// }
 
 tile6.onmouseover = function () {
     header.innerHTML = "dahlia.is/lost-in-space";
     arrow6.style.opacity = 1;
-    tile6.style.backgroundImage = "url('/static/media/m27-colorized-sharpened 2.JPG')";
+    tile6.style.backgroundImage = "url('/static/media/m27-colorized-sharpened 2.jpg')";
 }
 
 tile6.onmouseout = function () {
@@ -118,7 +118,7 @@ tile8.onmouseout = function () {
 }
 
 tile9.onmouseover = function () {
-    header.innerHTML = "dahlia.is/looking-for-a-job";
+    header.innerHTML = "dahlia.is/employable";
     arrow9.style.opacity = 1;
     tile9.style.backgroundImage = "url('/static/media/IMG_2011 2.jpg')";
 }
