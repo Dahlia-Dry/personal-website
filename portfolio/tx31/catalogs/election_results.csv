@@ -1,0 +1,19 @@
+title,filename,titlevar,locvar
+2018 General - MJ Hegar Votes Cast,data/2018gvotesbyprecinct.csv,Votes for Hegar,PrecinctKey
+2018 General - MJ Hegar Vote Percentage,data/2018gvotesbyprecinct.csv,Hegar %,PrecinctKey
+2018 General - John Carter Votes Cast,data/2018gvotesbyprecinct.csv,Votes for Carter,PrecinctKey
+2018 General - John Carter Vote Percentage,data/2018gvotesbyprecinct.csv,Carter %,PrecinctKey
+2018 General - Hegar-Carter Vote Percentage Margin,data/2018gvotesbyprecinct.csv,Margin,PrecinctKey
+2018 General - Voter Turnout (%),data/2018gvotesbyprecinct.csv,Turnout,PrecinctKey
+2018 General - Beto O'Rourke Vote Percentage  data/2018senatevotesbyprecinct.csv,Beto %,PrecinctKey,
+TX31 2020 March Primary Vote Percentage,data/2020pvotesbyprecinct.csv,Vote Percentage,PrecinctKey
+TX31 2020 March Primary Vote Margin,data/2020pvotesbyprecinct.csv,Margin,PrecinctKey
+TX31 2020 March Primary Dem Votes Cast,data/2020pvotesbyprecinct.csv,Total_D,PrecinctKey
+TX31 2020 July Runoff Vote Percentage,data/2020runoffvotesbyprecinct.csv,Vote Percentage,PrecinctKey
+TX31 2020 July Runoff Vote Margin,data/2020runoffvotesbyprecinct.csv,Margin,PrecinctKey
+TX31 2020 July Runoff Dem Votes Cast,data/2020runoffvotesbyprecinct.csv,Total ,PrecinctKey
+TX31 2020 Primary - Total Registered Voters,data/2020pvotesbyprecinct.csv,Total Registered Voters,PrecinctKey
+TX31 2018 Primary - Total Registered Voters,data/2018pvotesbyprecinct.csv,Total Registered Voters,PrecinctKey
+TX31 2016 General - Voter Turnout(%),data/2016gvotesbyprecinct.csv,Turnout,PrecinctKey
+TX31 2018 General - Total Registered Voters,data/2018gvotesbyprecinct.csv,Total Registered Voters,PrecinctKey
+TX31 2020 July Runoff-March Primary Vote Margin Difference,,,PrecinctKey
