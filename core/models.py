@@ -6,7 +6,8 @@ TYPES = ((0,'project'),
         (2,'travel'),
         (3,'astro'),
         (4,'writing'),
-        (5,'job'))
+        (5,'job'),
+        (6,'current project'))
 class Location(models.Model):
     name=models.CharField(max_length=200, unique=True)
     lat =models.FloatField()

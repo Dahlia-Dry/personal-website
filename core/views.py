@@ -14,30 +14,34 @@ class astrophoto_list(generic.ListView):
     template_name = 'lost-in-space.html'
     def get_context_data(self,**kwargs):
         context = super(astrophoto_list,self).get_context_data(**kwargs)
-        context['header_content'] = 'dahlia.is/lost-in-space'
+        context['header_content'] = 'lost-in-space'
+        return context
+class current_project_list(generic.ListView):
+    queryset = Post.objects.filter(type=6).order_by('-created_on')
+    template_name = 'post-list.html'
+    def get_context_data(self,**kwargs):
+        context = super(current_project_list,self).get_context_data(**kwargs)
+        context['header_content'] = 'currently'
         return context
 
 def rle(request):
-    return render(request,'rle.html',{'header_content':'dahlia.is/here'})
-
-def currently(request):
-    return render(request,'base.html',{'header_content':'dahlia.is/currently'})
+    return render(request,'rle.html',{'header_content':'currently'})
 
 def notes(request):
-    return render(request,'base.html',{'header_content':'dahlia.is/taking-notes'})
+    return render(request,'base.html',{'header_content':'taking-notes'})
 
 def places(request):
-    return render(request,'base.html',{'header_content':'dahlia.is/in-new-places'})
+    return render(request,'base.html',{'header_content':'in-new-places'})
 
 def thinking(request):
-    return render(request,'base.html',{'header_content':'dahlia.is/thinking'})
+    return render(request,'base.html',{'header_content':'thinking'})
 
 def outside(request):
-    return render(request,'base.html',{'header_content':'dahlia.is/outside'})
+    return render(request,'base.html',{'header_content':'outside'})
 
 def busy(request):
-    return render(request,'base.html',{'header_content':'dahlia.is/busy'})
+    return render(request,'base.html',{'header_content':'busy'})
 
 def job(request):
-    return render(request,'base.html',{'header_content':'dahlia.is/employable'})
+    return render(request,'base.html',{'header_content':'looking-for-a-job'})
 
