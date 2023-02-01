@@ -4,7 +4,7 @@ from django.views import generic
 from .models import *
 
 def home(request):
-    return render(request,'here.html')
+    return render(request,'here.html',{'header_content':'here'})
 
 def redirect_home(request):
     response = redirect('/here')
@@ -43,5 +43,5 @@ def busy(request):
     return render(request,'base.html',{'header_content':'busy'})
 
 def job(request):
-    return render(request,'base.html',{'header_content':'looking-for-a-job'})
+    return render(request,'resume.html',{'header_content':'at-work'})
 

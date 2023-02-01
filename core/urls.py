@@ -13,5 +13,5 @@ urlpatterns = [
     path('thinking/',views.thinking,name='thinking'),
     path('outside/',views.outside,name='outside'),
     path('busy/',views.busy,name='busy'),
-    path('looking-for-a-job/',views.job,name='job')
+    path('at-work/',views.job,name='job')
 ] 
