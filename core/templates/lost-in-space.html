@@ -30,34 +30,38 @@
         <h1 class="u-align-left u-text u-text-default u-text-1">Astrophotography</h1>
       </div>
     </section>
-    <section class="u-align-center u-clearfix u-palette-2-base u-section-2" id="sec-c40a">
-      <div class="u-clearfix u-sheet u-sheet-1">
-        <div id="carousel-5989" data-interval="5000" data-u-ride="false" class="u-carousel u-expanded-width u-slider u-slider-1">
-          <ol class="u-absolute-hcenter u-carousel-indicators u-carousel-indicators-1">
-            <li data-u-target="#carousel-5989" class="u-active u-grey-30 u-shape-circle" data-u-slide-to="0" style="width: 10px; height: 10px;"></li>
-            <li data-u-target="#carousel-5989" class="u-grey-30 u-shape-circle" data-u-slide-to="1" style="width: 10px; height: 10px;"></li>
+    <section class="u-align-center u-clearfix u-palette-2-base u-section-2" id="sec-2b6c">
+      <div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
+        <div class="u-align-center u-carousel u-expanded-width-sm u-expanded-width-xs u-gallery u-layout-carousel u-lightbox u-no-transition u-show-text-always u-gallery-1" data-interval="5000" data-u-ride="carousel" id="carousel-c442">
+          <ol class="u-absolute-hcenter u-carousel-indicators u-hidden u-carousel-indicators-1">
+            <li data-u-target="#carousel-c442" data-u-slide-to="0" class="u-active u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+            <li data-u-target="#carousel-c442" data-u-slide-to="1" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
           </ol>
-          <div class="u-carousel-inner" role="listbox">
-            <div class="u-active u-align-left u-carousel-item u-container-style u-slide">
-              <div class="u-container-layout u-container-layout-1">
-                <img class="u-expanded-width u-image u-image-contain u-image-default u-image-1" src="{{MEDIA_URL}}{{photo_list.0.image.url}}" alt="" data-image-width="766" data-image-height="586">
-                <h3 class="u-align-left u-text u-text-1">{{photo_list.0.title}}</h3>
-                <p class="u-align-left u-text u-text-2">{{photo_list.0.caption}} [{{photo_list.0.created_on}}]</p>
+          <div class="u-carousel-inner u-gallery-inner" role="listbox">
+            <div class="u-active u-carousel-item u-gallery-item u-shape-rectangle">
+              <div class="u-back-slide" data-image-width="1280" data-image-height="853">
+                <img class="u-back-image u-expanded u-image-contain" src="{{MEDIA_URL}}{{photo_list.0.image.url}}">
               </div>
+              <div class="u-container-align-left u-over-slide u-palette-3-dark-1 u-valign-top-md u-valign-top-sm u-valign-top-xs u-over-slide-1">
+                <h5 class="u-align-left u-gallery-heading" style="width: 1002px; margin-right: auto; margin-left: 0px;">{{photo_list.0.title}}</h5>
+                <p class="u-align-left u-gallery-text" style="width: 1002px; margin-right: auto; margin-left: 0px; font-size: 0.75rem;">{{photo_list.0.created_on}} | </p>
+            </div>
             </div>
             {% for astro_photo in photo_list %}
             {% if not forloop.first %}
-            <div class="u-align-left u-carousel-item u-container-style u-slide">
-              <div class="u-container-layout u-container-layout-2">
-                <img class="u-expanded-width u-image u-image-contain u-image-default u-image-2" src="{{astro_photo.image.url}}" alt="" data-image-width="766" data-image-height="586">
-                <h3 class="u-align-left u-text u-text-3">{{astro_photo.title}}</h3>
-                <p class="u-align-left u-text u-text-4">{{astro_photo.caption}} [{{astro_photo.created_on}}]</p>
+            <div class="u-carousel-item u-gallery-item u-shape-rectangle">
+              <div class="u-back-slide" data-image-width="1280" data-image-height="853">
+                <img class="u-back-image u-expanded" src="{{astro_photo.image.url}}">
+              </div>
+              <div class="u-container-align-left u-over-slide u-palette-3-dark-1 u-valign-top-md u-valign-top-sm u-valign-top-xs u-over-slide-2">
+                <h5 class="u-align-left u-gallery-heading" style="width: 982px; margin-right: auto; margin-left: 0px;">{{astro_photo.title}}</h5>
+                <p class="u-align-left u-gallery-text" style="width: 982px; margin-right: auto; margin-left: 0px; font-size: 0.75rem;">{{astro_photo.created_on}} | </p>
               </div>
             </div>
             {% endif %}
             {% endfor %}
           </div>
-          <a class="u-absolute-vcenter-lg u-absolute-vcenter-md u-absolute-vcenter-sm u-absolute-vcenter-xl u-carousel-control u-carousel-control-prev u-grey-70 u-icon-circle u-spacing-10 u-carousel-control-1" href="#carousel-5989" role="button" data-u-slide="prev">
+          <a class="u-absolute-vcenter u-carousel-control u-carousel-control-prev u-grey-70 u-icon-circle u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-1" href="#carousel-c442" role="button" data-u-slide="prev">
             <span aria-hidden="true">
               <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
 c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
@@ -69,7 +73,7 @@ c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.3
 c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
             </span>
           </a>
-          <a class="u-absolute-vcenter-lg u-absolute-vcenter-md u-absolute-vcenter-sm u-absolute-vcenter-xl u-carousel-control u-carousel-control-next u-grey-70 u-icon-circle u-spacing-10 u-carousel-control-2" href="#carousel-5989" role="button" data-u-slide="next">
+          <a class="u-absolute-vcenter u-carousel-control u-carousel-control-next u-grey-70 u-icon-circle u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-2" href="#carousel-c442" role="button" data-u-slide="next">
             <span aria-hidden="true">
               <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
 L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
