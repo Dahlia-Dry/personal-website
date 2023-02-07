@@ -1,0 +1,120 @@
+.u-section-1 .u-sheet-1 {
+    min-height: 1563px;
+  }
+  
+  .u-section-1 .u-text-1 {
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    margin-top: 20px;
+  }
+  
+  .u-section-1 .u-text-2 {
+    margin: 20px 0 0;
+  }
+  
+  .u-section-1 .u-btn-1 {
+    background-image: none;
+    padding: 0;
+  }
+  
+  .u-section-1 .u-btn-2 {
+    font-weight: 700;
+    font-size: 0.625rem;
+    margin: 20px auto 0;
+    padding: 8px 33px;
+  }
+  
+  .u-section-1 .u-list-1 {
+    margin-top: 30px;
+    margin-bottom: 60px;
+  }
+  
+  .u-section-1 .u-repeater-1 {
+    grid-gap: 10px 10px;
+    grid-auto-columns: 100%;
+    grid-template-columns: 100%;
+    min-height: 1123px;
+  }
+  
+  .u-section-1 .u-container-layout-1 {
+    padding: 0 0 30px;
+  }
+  
+  .u-section-1 .u-video-1 {
+    height: 500px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  
+  .u-section-1 .u-container-layout-2 {
+    padding: 0 0 30px;
+  }
+  
+  .u-section-1 .u-video-2 {
+    height: 500px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  
+  @media (max-width: 991px) {
+    .u-section-1 .u-sheet-1 {
+      min-height: 1654px;
+    }
+  
+    .u-section-1 .u-list-1 {
+      margin-top: 0;
+    }
+  
+    .u-section-1 .u-repeater-1 {
+      min-height: 796px;
+    }
+  
+    .u-section-1 .u-container-layout-1 {
+      padding-bottom: 0;
+    }
+  
+    .u-section-1 .u-video-1 {
+      height: 362px;
+      margin-top: 20px;
+    }
+  
+    .u-section-1 .u-container-layout-2 {
+      padding-bottom: 0;
+    }
+  
+    .u-section-1 .u-video-2 {
+      height: 362px;
+      margin-top: 20px;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .u-section-1 .u-repeater-1 {
+      min-height: 647px;
+    }
+  
+    .u-section-1 .u-video-1 {
+      margin-top: -39px;
+    }
+  
+    .u-section-1 .u-video-2 {
+      margin-top: -39px;
+    }
+  }
+  
+  @media (max-width: 575px) {
+    .u-section-1 .u-btn-2 {
+      margin-left: 0;
+      margin-right: 0;
+      padding-right: 23px;
+      padding-left: 22px;
+    }
+  
+    .u-section-1 .u-video-1 {
+      margin-top: -77px;
+    }
+  
+    .u-section-1 .u-video-2 {
+      margin-top: -77px;
+    }
+  }

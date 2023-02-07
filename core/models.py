@@ -32,12 +32,11 @@ class Post(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     summary = models.TextField(blank=True)
     fulltext=models.TextField(blank=True)
-    type = models.IntegerField(choices=TYPES, default=0)
+    post_type = models.IntegerField(choices=TYPES, default=0)
     cover_photo = models.ImageField(upload_to ='cover_photos/')
     created_on = models.DateField()
     location = models.ManyToManyField(Location)
-    use_template = models.BooleanField()
-    photo_group=models.ManyToManyField(Album,blank=True)
+    html_file = models.CharField(max_length=200,default='building_blocks/base.html')
     tags = TaggableManager(blank=True)
 
     class Meta:
@@ -45,6 +44,7 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
 class Photo(models.Model):
     title = models.CharField(max_length=200, unique=True)
     caption = models.TextField(blank=True)
@@ -60,8 +60,8 @@ class Photo(models.Model):
         return self.title
 
 class AstroPhoto(Photo):
-    instruments = models.TextField()
-    catalogue_name = models.TextField(blank=True)
+    instruments = models.TextField(blank=True)
+    catalog_name = models.TextField(blank=True)
     link = models.TextField(blank=True)
     
 
