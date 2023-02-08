@@ -2,13 +2,13 @@ from django.db import models
 from taggit.managers import TaggableManager
 from image_cropping import ImageRatioField
 
-TYPES = ((0,'project'),
+TYPES = ((0,'busy'),
         (1,'outside'),
-        (2,'travel'),
-        (3,'astro'),
-        (4,'writing'),
-        (5,'job'),
-        (6,'current project'))
+        (2,'in-new-places'),
+        (3,'lost-in-space'),
+        (4,'thinking'),
+        (5,'at-work'),
+        (6,'currently'))
 class Location(models.Model):
     name=models.CharField(max_length=200, unique=True)
     lat =models.FloatField()
@@ -28,7 +28,7 @@ class Album(models.Model):
         return self.name
 
 class Post(models.Model):
-    title = models.CharField(max_length=200, unique=True)
+    title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     summary = models.TextField(blank=True)
     fulltext=models.TextField(blank=True)
@@ -46,10 +46,10 @@ class Post(models.Model):
         return self.title
 
 class Photo(models.Model):
-    title = models.CharField(max_length=200, unique=True)
+    title = models.CharField(max_length=200)
     caption = models.TextField(blank=True)
     image = models.ImageField(upload_to ='images/')
-    location = models.ManyToManyField(Location)
+    location = models.ForeignKey(Location, blank=True,on_delete=models.CASCADE)
     created_on = models.DateField()
     album = models.ManyToManyField(Album)
 

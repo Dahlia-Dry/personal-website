@@ -24,7 +24,7 @@
     <meta property="og:type" content="website">
   </head>
   <body class="u-body u-xl-mode" data-lang="en">
-    {% block header %} {% include 'header.html' %} {% endblock header %}
+    {% block header %} {% include 'building_blocks/header.html' %} {% endblock header %}
     <section class="u-clearfix u-container-align-left u-section-1" id="sec-4cb5">
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <h1 class="u-align-left u-text u-text-default u-text-1">Astrophotography</h1>
@@ -40,14 +40,17 @@
           <div class="u-carousel-inner u-gallery-inner" role="listbox">
             <div class="u-active u-carousel-item u-gallery-item u-shape-rectangle">
               <div class="u-back-slide" data-image-width="1280" data-image-height="853">
-                <img class="u-back-image u-expanded u-image-contain" src="{{MEDIA_URL}}{{photo_list.0.image.url}}">
+                <img class="u-back-image u-expanded u-image-contain" src="{{MEDIA_URL}}{{object_list.0.image.url}}">
               </div>
               <div class="u-container-align-left u-over-slide u-palette-3-dark-1 u-valign-top-md u-valign-top-sm u-valign-top-xs u-over-slide-1">
-                <h5 class="u-align-left u-gallery-heading" style="width: 1002px; margin-right: auto; margin-left: 0px;">{{photo_list.0.title}}</h5>
-                <p class="u-align-left u-gallery-text" style="width: 1002px; margin-right: auto; margin-left: 0px; font-size: 0.75rem;">{{photo_list.0.created_on}} | </p>
+                <h5 class="u-align-left u-gallery-heading" style="width: 1002px; margin-right: auto; margin-left: 0px;">{{object_list.0.title}}</h5>
+                <p class="u-align-left u-gallery-text" style="width: 1002px; margin-right: auto; margin-left: 0px; font-size: 0.75rem;">{{object_list.0.created_on}} | {{object_list.0.location.name}} | {{object_list.0.instruments}}</p>
+                {% if object_list.0.link != "" %}
+                <p class="u-align-left u-gallery-text" style="width: 1002px; margin-right: auto; margin-left: 0px;"><a href="{{object_list.0.link}}" target="_blank"> About {{object_list.0.catalog_name}}</a></p>
+                {% endif%}
             </div>
             </div>
-            {% for astro_photo in photo_list %}
+            {% for astro_photo in object_list %}
             {% if not forloop.first %}
             <div class="u-carousel-item u-gallery-item u-shape-rectangle">
               <div class="u-back-slide" data-image-width="1280" data-image-height="853">
@@ -55,8 +58,11 @@
               </div>
               <div class="u-container-align-left u-over-slide u-palette-3-dark-1 u-valign-top-md u-valign-top-sm u-valign-top-xs u-over-slide-2">
                 <h5 class="u-align-left u-gallery-heading" style="width: 982px; margin-right: auto; margin-left: 0px;">{{astro_photo.title}}</h5>
-                <p class="u-align-left u-gallery-text" style="width: 982px; margin-right: auto; margin-left: 0px; font-size: 0.75rem;">{{astro_photo.created_on}} | </p>
-              </div>
+                <p class="u-align-left u-gallery-text" style="width: 1002px; margin-right: auto; margin-left: 0px; font-size: 0.75rem;">{{astro_photo.created_on}} | {{astro_photo.location.name}} | {{astro_photo.instruments}}</p>
+                {% if astro_photo.link != "" %}
+                  <p class="u-align-left u-gallery-text" style="width: 1002px; margin-right: auto; margin-left: 0px;"><a href="{{astro_photo.link}}" target="_blank"> About {{astro_photo.catalog_name}}</a></p>
+                {% endif %}
+                </div>
             </div>
             {% endif %}
             {% endfor %}
@@ -90,6 +96,6 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
     </section>
     
     
-    {% block footer %} {% include 'footer.html' %} {% endblock footer %}
+    {% block footer %} {% include 'building_blocks/footer.html' %} {% endblock footer %}
   
 </body></html>

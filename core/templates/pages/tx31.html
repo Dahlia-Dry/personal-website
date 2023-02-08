@@ -1,0 +1,261 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="font-size: 24px;" lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Astrophotography">
+    <meta name="description" content="">
+    <title>tx31-data</title>
+    <link rel="stylesheet" href="{% static 'css/building_blocks/nicepage.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static '/css/pages/tx31.css' %}" media="screen">
+    <script class="u-script" type="text/javascript" src="{% static '/js/jquery.js' %}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{% static '/js/nicepage.js' %}" defer=""></script>
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i">
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": ""
+}</script>
+    <meta name="theme-color" content="#73a3de">
+    <meta property="og:title" content="current Research">
+    <meta property="og:type" content="website">
+  </head>
+  <body class="u-body u-xl-mode" data-lang="en">
+    {% block header %} {% include 'building_blocks/header.html' %} {% endblock header %}
+    <section class="u-clearfix u-section-1" id="sec-284b">
+      <div class="u-clearfix u-sheet u-valign-top u-sheet-1">
+        <div class="fr-view u-clearfix u-rich-text u-text u-text-1">
+          <h3 style="text-align: left; line-height: 1.2;">
+            <span style="font-size: 1.5rem; font-weight: 700;">Summary of work on Donna Imam’s Campaign for Texas’s 31st Congressional District</span>
+          </h3>
+          <h5>
+            <span style="font-weight: 700;">I. Overview</span>
+          </h5>
+          <p id="isPasted">From March 2020 to November 2020, I worked as a <a class="u-active-none u-border-none u-btn u-button-style u-hover-none u-none u-text-palette-4-base u-btn-1" href="https://www.bluebonnetdata.org/">Bluebonnet Data</a> fellow on the campaign of <a class="u-active-none u-border-none u-btn u-button-style u-hover-none u-none u-text-palette-4-base u-btn-2" href="https://ballotpedia.org/Donna_Imam">Donna Imam</a>, a former computer engineer who sought to oust 9-term Republican incumbent John Carter for the U.S. Congressional seat in Texas’s 31st district. I joined the campaign in the wake of the initial Democratic primary elections, in which Imam was the runner up by a margin of about 5 points in a crowded field, initiating a runoff election cycle that would run through July 14th. During the runoff, I performed various analyses on demographic trends in the district to enable the campaign to efficiently target precincts for lit drop and compile lists of voters to phone-bank. Through extensive work coding in python and using the Texas Democratic party’s VAN, I also created a mapping software that provided daily updates to the campaign on their voter outreach progress and coordinated with their paid canvassers to inform them of next targets for lit drop and verify the hours they logged for payroll. On July 14th, Imam emerged as the clear winner by a 13 point margin, propelling the campaign to the general election contest on November 3rd. Throughout the Fall 2020 semester, I continued to complete various jobs relating to data and tech for the campaign (specific projects outlined in following sections).&nbsp;
+          </p>
+          <p>We had many reasons to be hopeful that we might succeed in flipping TX31: the Cook Political Report rated it as one of its swing districts (though under the category “Likely Republican”), 2020 Senate candidate MJ Hegar nearly flipped the seat in 2018, and demographic shifts in the past two years alone suggested that the district would likely be one to flip if Democrats up and down the ballot in Texas performed well in November. However, the record levels of both Repubican and Democrat turnout and the Republican down-ballot advantage proved to be too much for us, along with the entire crop of Texas Democratic Congressional challengers (none of whom won their races), to overcome. Imam ultimately lost by roughly 9 points to Carter, and in the post-election period, I have stayed on at her request to help her perform an <a class="u-active-none u-border-none u-btn u-button-style u-hover-none u-none u-text-palette-4-base u-btn-3" href="https://youtu.be/3ptZseYTHEg">in-depth analysis</a> of the election results to gain insight into the Democrats’ failure to flip Texas blue (see “Post Election” below).&nbsp;
+          </p>
+          <p>Despite the end result, I feel incredibly grateful to have had the opportunity to work on this campaign and am equally proud of the work I was able to do and how much I learned in the process. As Donna outlines in her post-election analysis, our team actually beat expectations significantly, coming much closer to victory despite having significantly less funding and name-ID than several of the other top 10 targeted U.S. House races. Like many others, I felt a strong moral obligation to work as hard as possible on this election in what may be our last, best chance to build a sustainable future before many of the consequences of our actions become irreversible. Working on this campaign and getting to personally know a candidate (a former engineer!) and a team who truly inspire me has been an amazing opportunity to do just that, and despite the many challenges that remain deeply troubling in the wake of this election, my experience in politics this year has ultimately left me with a strong sense of hope that I plan on carrying forward to my future activism.&nbsp;</p>
+        </div>
+      </div>
+    </section>
+    <section class="u-align-left u-clearfix u-section-2" id="sec-b3aa">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="fr-view u-clearfix u-rich-text u-text u-text-1">
+          <h5>
+            <span style="font-weight: 700;">II. Data Dashboard</span>
+          </h5>
+          <p style="text-align: left;">Using the Dash framework for python, I built an interactive <a class="u-active-none u-border-none u-btn u-button-style u-hover-none u-none u-text-palette-4-base u-btn-1" href="https://github.com/Dahlia-Dry/Campaign-Data-Dashboard">Data Dashboard</a> hosted publicly (password-protected) through Heroku. It utilized univariate and bivariate analysis of data pulled from VAN and from election results archives, in addition to GIS data for mapping the precincts of TX31, to allow us to explore correlations between various factors such as turnout, voter demographics, election results, etc, that informed decisions on targeting resources for field organizing. The version of this Dashboard that I published to GitHub with publicly available sample data demonstrating some of its capabilities is still hosted on heroku and can be found at the link in the button below. The features this dashboard included while in active use are outlined in the following section.
+          </p>
+        </div>
+        <a href="https://nameless-spire-73462.herokuapp.com/" class="u-align-center u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-6 u-btn-2" target="_blank">Click here to launch live demo software</a>
+      </div>
+    </section>
+    <section class="u-align-left u-clearfix u-section-3" id="sec-fb82">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <ul class="u-text u-text-default u-text-1">
+          <li>Demographic Analysis (Fig. 1):<b>
+              <br>
+              <span style="font-size: 0.75rem; font-weight: 400;">This page on the dashboard allowed the user to toggle a large number of variables mapped to the precincts of TX31 (eg. # voters aged 18-24, Donna’s vote share in the runoff) and explore their distributions through histograms and their correlations through scatterplots.</span></b>
+            <br>
+          </li>
+          <li>Voter Targeting (Fig. 2):<b>
+              <br>
+              <span style="font-weight: 400; font-size: 0.75rem;"></span></b><b>
+              <span style="font-size: 0.75rem; font-weight: 400;">This page allowed us to calculate which precincts to prioritize for field organizing by assigning them scores based on weighted user-selected parameters. Fig. 2 shows the ranking of precincts in the top right quadrant based on four parameters with sliders (lower right quadrant) that allow the user to adjust their weights. The TX31 chloropleth (upper left quadrant) depicts darker precincts as stronger targets, and the user can hover to see exact stats for each precinct (lower left quadrant).</span>
+              <br></b>
+          </li>
+          <li><b>
+              <span style="font-weight: 400; font-size: 0.75rem;">
+                <span style="font-size: 1rem;"> 2020 Vote Tracker (Fig. 3)</span> :<b>
+                  <br></b><b>
+                  <span style="font-weight: 400;">This page was added with the start of early voting, and functioned as a live early vote tracker by scraping web data every time it was refreshed to get updated numbers for the early vote by day (Fig.3) as well as by polling place, which helped the campaign figure out where to send poll greeters and yard signs for maximum effectiveness.&nbsp;</span>
+                  <br></b>
+              </span></b>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="u-align-left u-clearfix u-section-4" id="sec-9e97">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-expanded-width u-gallery u-layout-grid u-lightbox u-no-transition u-show-text-on-hover u-gallery-1">
+          <div class="u-gallery-inner u-gallery-inner-1">
+            <div class="u-effect-fade u-effect-hover-zoom u-gallery-item">
+              <div class="u-back-slide" data-image-width="1420" data-image-height="874">
+                <img class="u-back-image u-expanded u-image-contain" src="{% static 'media/tx31-1.png' %}" alt="Fig. 1">
+              </div>
+              <div class="u-over-slide u-shading u-over-slide-1">
+                <h3 class="u-gallery-heading">Fig. 1</h3>
+                <p class="u-gallery-text">Demographic Analysis</p>
+              </div>
+            </div>
+            <div class="u-effect-fade u-effect-hover-zoom u-gallery-item" data-image-width="1420" data-image-height="874">
+              <div class="u-back-slide" data-image-width="1540" data-image-height="846">
+                <img class="u-back-image u-expanded u-image-contain" src="{% static 'media/tx31-2.png' %}" alt="Fig. 2">
+              </div>
+              <div class="u-over-slide u-shading u-over-slide-2">
+                <h3 class="u-gallery-heading">Fig. 2</h3>
+                <p class="u-gallery-text">Voter Targeting</p>
+              </div>
+            </div>
+            <div class="u-effect-fade u-effect-hover-zoom u-gallery-item">
+              <div class="u-back-slide" data-image-width="1528" data-image-height="618">
+                <img class="u-back-image u-expanded u-image-contain" src="{% static 'media/tx31-3.png' %}" alt="Fig. 3">
+              </div>
+              <div class="u-over-slide u-shading u-over-slide-3">
+                <h3 class="u-gallery-heading">Fig. 3</h3>
+                <p class="u-gallery-text">2020 Vote Tracker</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="u-clearfix u-palette-2-base u-section-5" id="sec-b3cf">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="fr-view u-clearfix u-rich-text u-text u-text-1">
+          <h5>
+            <span style="font-weight: 700;">III. Donor Database</span>
+          </h5>
+          <p style="text-align: left;">As for any grassroots campaign, one of the biggest struggles throughout the general election was fundraising. So, doing things cost-efficiently was of paramount importance. For this purpose, considering the fact that the campaign already used the google suite of tools extensively for phone-banking etc, I developed a cost-free donor database with a google sheets interface that would allow us to circumvent paying for an alternative database that consultants had recommended we use. This allowed the campaign to conduct call and text campaigns to donors by making queries to a MySQL database I managed through a google sheets interface that I designed and customized to fit the needs of the people who were using it.</p>
+        </div>
+      </div>
+    </section>
+    <section class="u-clearfix u-palette-2-base u-section-6" id="sec-aedf">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <ul class="u-text u-text-default u-text-1">
+          <li>The Data:<b>
+              <br>
+              <span style="font-size: 0.75rem; font-weight: 400;"> Actblue records of previous campaign donors, combined with prospective donor records obtained periodically from Grassroots Analytics</span></b>
+            <br>
+          </li>
+          <li>MySQL Backend:<b>
+              <br>
+              <span style="font-weight: 400; font-size: 0.75rem;"></span></b><b>
+              <span style="font-size: 0.75rem; font-weight: 400;">I wrote several python scripts to clean and process the donor data we got from ActBlue and Grassroots and merge new donors donor files to the database as we got them. This data was then hosted as a MySQL database via Google Cloud that could be queried by both my python scripts for maintenance and by the google sheets frontend that was used by other campaign personnel to generate call/text lists.</span>
+              <br></b>
+          </li>
+          <li>
+            <span style="font-size: 0.75rem;">
+              <span style="font-weight: 400; font-size: 1rem;"> Google Sheets Frontend (Fig.4)</span>:<b style="font-weight: 400;">
+                <br></b>I used google's built-in scripting tool to link a google sheet to the MySQL database. On the sheet, I set up a variety of fields in which a user could enter filter criteria, and then query the database to return results to the sheet, update entries and write the changes back to the database, and create formatted call lists for export. The sheet could be copied so that different people could use it and run different queries. This allowed multiple files to read and write&nbsp; to a single source, which kept all our data up-to-date. As can be seen in Fig.4, there is an added "TX31 Donor Database" menu in the google sheets toolbar, which the user can click to perform the various actions of filtering data based on their entered criteria, writing changes back to the database, and exporting call lists.<b style="font-weight: 400;">
+                <br></b>
+            </span>
+          </li>
+          <li> Analytics (Fig.5):<b>
+              <br>
+              <span style="font-weight: 400;">
+                <span style="font-size: 0.75rem;"> In order to help figure out how to filter donors and prospective donors for targeting, I periodically ran analysis on the contents of the database. One such analysis, a timelapse of the amount donated vs number of individual donations by state, is depicted in Fig. 5, with the size of the bubble correlating to the number of people from that specific state we had in the database.</span>
+              </span></b>
+            <br>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="u-clearfix u-palette-2-base u-section-7" id="sec-c90d">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-expanded-width u-gallery u-layout-grid u-lightbox u-no-transition u-show-text-on-hover u-gallery-1">
+          <div class="u-gallery-inner u-gallery-inner-1">
+            <div class="u-effect-fade u-effect-hover-zoom u-gallery-item">
+              <div class="u-back-slide" data-image-width="1344" data-image-height="878">
+                <img class="u-back-image u-expanded u-image-contain" src="{% static 'media/tx31-4.png' %}" alt="Fig. 4">
+              </div>
+              <div class="u-over-slide u-shading u-over-slide-1">
+                <h3 class="u-gallery-heading">Fig. 4</h3>
+                <p class="u-gallery-text">Google Sheets Frontend</p>
+              </div>
+            </div>
+            <div class="u-effect-fade u-effect-hover-zoom u-gallery-item" data-image-width="1420" data-image-height="874">
+              <div class="u-back-slide" data-image-width="1556" data-image-height="838">
+                <img class="u-back-image u-expanded u-image-contain" src="{% static 'media/tx31-5.png' %}" alt="Fig. 5">
+              </div>
+              <div class="u-over-slide u-shading u-over-slide-2">
+                <h3 class="u-gallery-heading">Fig. 5</h3>
+                <p class="u-gallery-text">Database analytics</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="u-clearfix u-palette-2-base u-section-8" id="sec-7fd4">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <div class="fr-view u-clearfix u-rich-text u-text u-text-1">
+          <h5>
+            <span style="font-weight: 700;">IV. Miscellaneous Tasks</span>
+          </h5>
+          <p style="text-align: left;">Throughout the fall, I also completed several smaller projects relating to data and tech. I briefly co-opted my Data Dashboard and used Tax Appraisal GIS data to cut turfs for canvassers to do lit drop in Bell county (Fig. 6). I built a web scraper that ran Zillow queries on all the in-district addresses we had from VAN to get insight into median home prices by precinct and zipcode. I ran analysis on the district-level poll that was done by PPP in TX31 in the lead-up to the election (Fig. 7). I wrote several scripts to automate tasks relating to text-banking in Twilio, using its API to purchase large quantities of toll-free numbers, assign those numbers to text campaigns, and request usage logs. I pulled a lot of data from the Williamson and Bell county election archives to give us a more complete picture of previous election outcomes and differences between the congressional candidate and the top of the ticket.</p>
+        </div>
+      </div>
+    </section>
+    <section class="u-clearfix u-palette-2-base u-section-9" id="sec-396e">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-expanded-width u-gallery u-layout-grid u-lightbox u-no-transition u-show-text-on-hover u-gallery-1">
+          <div class="u-gallery-inner u-gallery-inner-1">
+            <div class="u-effect-fade u-effect-hover-zoom u-gallery-item">
+              <div class="u-back-slide" data-image-width="1510" data-image-height="760">
+                <img class="u-back-image u-expanded u-image-contain" src="{% static 'media/tx31-6.png' %}" alt="Fig. 6">
+              </div>
+              <div class="u-over-slide u-shading u-over-slide-1">
+                <h3 class="u-gallery-heading">Fig. 6</h3>
+                <p class="u-gallery-text">Adapting the data dashboard for turf cutting</p>
+              </div>
+            </div>
+            <div class="u-effect-fade u-effect-hover-zoom u-gallery-item" data-image-width="1420" data-image-height="874">
+              <div class="u-back-slide" data-image-width="1408" data-image-height="796">
+                <img class="u-back-image u-expanded u-image-contain" src="{% static 'media/tx31-7.png' %}" alt="Fig. 7">
+              </div>
+              <div class="u-over-slide u-shading u-over-slide-2">
+                <h3 class="u-gallery-heading">Fig. 7</h3>
+                <p class="u-gallery-text">Comparing crosstabs in VAN database vs district poll</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="u-clearfix u-palette-2-base u-section-10" id="sec-b05a">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <div class="fr-view u-clearfix u-rich-text u-text u-text-1">
+          <h5>
+            <span style="font-weight: 700;">V. Post election:&nbsp;</span>
+            <a class="u-active-none u-border-none u-btn u-button-style u-hover-none u-none u-text-palette-4-base u-btn-1" href="https://youtu.be/3ptZseYTHEg">
+              <span style="font-weight: 700;">Data Deep Dive</span>
+            </a>
+          </h5>
+          <p style="text-align: left;">In the aftermath of the November 3rd election, Donna asked me to continue working with her to perform an analysis of the election results in the 10 congressional districts with the strongest Democratic challengers in Texas (in addition to two with competitive Republican challengers). The biggest task here was to aggregate top-of ticket (i.e. President, Senate) results by congressional district instead of by county as they are reported, which involves mapping out which counties fall within which districts and then gathering both Texas Secretary of State data and precinct level reports from individual counties. I did this for 2016, 2018, and 2020 general election results (the part of the process where I use regression to screen for errors in my calculations is depicted in Fig. 8). Donna then used this data to compile a presentation (linked in the header above) on her insights into why Democrats lost in Texas in 2020. I also created several of the figures used in the presentation, one of which is Fig. 9. &nbsp;</p>
+        </div>
+      </div>
+    </section>
+    <section class="u-clearfix u-palette-2-base u-section-11" id="sec-6f76">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-expanded-width u-gallery u-layout-grid u-lightbox u-no-transition u-show-text-on-hover u-gallery-1">
+          <div class="u-gallery-inner u-gallery-inner-1">
+            <div class="u-effect-fade u-effect-hover-zoom u-gallery-item">
+              <div class="u-back-slide" data-image-width="1522" data-image-height="730">
+                <img class="u-back-image u-expanded u-image-contain" src="{% static 'media/tx31-8.png' %}" alt="Fig. 8">
+              </div>
+              <div class="u-over-slide u-shading u-over-slide-1">
+                <h3 class="u-gallery-heading">Fig. 8</h3>
+                <p class="u-gallery-text">County-by-County results regression </p>
+              </div>
+            </div>
+            <div class="u-effect-fade u-effect-hover-zoom u-gallery-item" data-image-width="1420" data-image-height="874">
+              <div class="u-back-slide" data-image-width="1348" data-image-height="836">
+                <img class="u-back-image u-expanded u-image-contain" src="{% static 'media/tx31-9.png' %}" alt="Fig. 9">
+              </div>
+              <div class="u-over-slide u-shading u-over-slide-2">
+                <h3 class="u-gallery-heading">Fig. 9</h3>
+                <p class="u-gallery-text">Example of analysis done on aggregated precinct-level results</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    {% block footer %} {% include 'building_blocks/footer.html' %} {% endblock footer %}
+  
+</body></html>
