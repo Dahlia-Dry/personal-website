@@ -21,4 +21,4 @@ detail_view_patterns = [path('busy/<slug>',views.create_detail_view(0),name='bus
                         path('currently/<slug>',views.create_detail_view(6),name='currently_detail'),
                         path('at-work/',views.job,name='job')]
 
-urlpatterns= home_patterns+list_view_patterns+detail_view_patterns
+urlpatterns= urlpatterns+home_patterns+list_view_patterns+detail_view_patterns
