@@ -25,7 +25,7 @@ class webPage(object):
         self.meta,self.markdown= self._parse_meta()
         self.content=self._parse_content()
     def _parse_meta(self):
-        p = open(self.filepath,'r')
+        p = open(os.path.join(settings.BASE_DIR,self.filepath),'r')
         page =p.read()
         p.close()
         yaml = [x.split(':') for x in page.split('---')[1].split('\n')][1:-1]
@@ -63,7 +63,7 @@ class webPage(object):
             value = []
             item = next(contents,None)
             if item.startswith('!readjson'):
-                data[key] = json.loads(open(os.path.join('static/assets/',item.split(' ')[1].strip())).read())
+                data[key] = json.loads(open(os.path.join(settings.STATIC_ROOT,'assets',item.split(' ')[1].strip())).read())
                 print(data[key])
             elif item.startswith('!python'):
                 data[key] = eval(item.split(' ')[1].strip())
