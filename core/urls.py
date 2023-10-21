@@ -13,7 +13,8 @@ detail_views = ['currently','researching','making','on-a-bike']
 
 
 home_patterns = [path('',views.redirect_home,name='redirect_home'),
-                 path('here',views.home_view,name='here')]
+                 path('here',views.home_view,name='here'),
+                 path('here/',views.redirect_home,name='here/')]
 
 list_view_patterns = [path(f"{l}",views.list_view,name=f"{l}_post_list") for l in list_views]
 
