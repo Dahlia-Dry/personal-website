@@ -3,62 +3,79 @@ from django.http import HttpResponse
 from django.views import generic
 from .models import *
 
-def home(request):
-    return render(request,'pages/here.html',{'header_content':'here'})
+import sys
+sys.path.append('..')
+from utilities.webpage import *
+
+MENU= json.loads(open('core/static/assets/here/menu.json').read())
 
 def redirect_home(request):
     response = redirect('/here')
     return response
 
-class astrophoto_list(generic.ListView):
+def home_view(request):
+    context ={}
+    context["post"] = Post.objects.get(slug='')
+    post_data = webPage(context['post'].content)
+    template_dir = os.path.split(post_data.meta['html'])
+    template_name = os.path.join(template_dir[0].split('/')[-1],template_dir[1])
+    context["header_content"] = post_data.meta['post_type']
+    context["menu"] = MENU
+    for key in post_data.content:
+        context[key] = post_data.content[key]
+    return render(request, template_name, context)
+
+def astrophoto_gallery(request):
     queryset = AstroPhoto.objects.all()
-    template_name = 'pages/lost-in-space.html'
-    def get_context_data(self,**kwargs):
-        context = super(astrophoto_list,self).get_context_data(**kwargs)
-        context['header_content'] = 'lost-in-space'
-        return context
+    template_name = 'pages_html/lost-in-space.html'
+    context = {}
+    context['photo_list'] = queryset
+    context['header_content'] = 'lost-in-space'
+    context['menu'] = MENU
+    return render(request,template_name,context)
 
-def create_detail_view(type):
-    def detail_view(request,slug):
-        # dictionary for initial data with
-        # field names as keys
-        context ={}
-        context["post"] = Post.objects.get(slug=slug)
-        template_name = context["post"].html_file
-        context["header_content"] = TYPES[type][1]
-        return render(request, template_name, context)
-    return detail_view
+def astrophoto_indiv(request):
+    u = request.path.split('/')[-1]
+    a = AstroPhoto.objects.get(uid=u)
+    context = {}
+    context['photo'] = a
+    context["header_content"] = 'lost-in-space'
+    context["menu"] = MENU
+    return render(request,'pages_html/astrophoto.html',context)
 
-def create_list_view(type_list,title_type=None):
-    if title_type is None:
-        title_type = type_list[0]
-    class list_view(generic.ListView):
-        queryset = Post.objects.filter(post_type__in=type_list).order_by('-created_on')
-        print('LEN',len(queryset))
-        template_name = 'building_blocks/post-list.html'
-        def get_context_data(self,**kwargs):
-            context = super(list_view,self).get_context_data(**kwargs)
-            context['header_content'] = TYPES[title_type][1]
-            context['subdir'] = TYPES[title_type][1]+'/'
-            return context
-    return list_view
+def detail_view(request):
+    if not request.path.endswith('/'):
+        slug = request.path.split('/')[-1]
+    else:
+        slug = request.path.split('/')[-2]
+    context ={}
+    context["post"] = Post.objects.get(slug=slug)
+    post_data = webPage(context['post'].content)
+    template_dir = os.path.split(post_data.meta['html'])
+    template_name = os.path.join(template_dir[0].split('/')[-1],template_dir[1])
+    context["header_content"] = post_data.meta['post_type']
+    context["menu"] = MENU
+    for key in post_data.content:
+        context[key] = post_data.content[key]
+    return render(request, template_name, context)
 
-
-def notes(request):
-    return render(request,'building_blocks/base.html',{'header_content':'taking-notes'})
-
-def places(request):
-    return render(request,'building_blocks/base.html',{'header_content':'in-new-places'})
-
-def thinking(request):
-    return render(request,'building_blocks/base.html',{'header_content':'thinking'})
-
-def outside(request):
-    return render(request,'building_blocks/base.html',{'header_content':'outside'})
-
-def busy(request):
-    return render(request,'building_blocks/base.html',{'header_content':'busy'})
-
-def job(request):
-    return render(request,'pages/resume.html',{'header_content':'at-work'})
+def list_view(request,):
+    if not request.path.endswith('/'):
+        post_type = request.path.split('/')[-1]
+    else:
+        post_type = request.path.split('/')[-2]
+    queryset = Post.objects.filter(post_type=post_type).order_by('-created_on')
+    #reshape posts into side-by-side pairs
+    post_pairs = []
+    for i in range(0,len(queryset),2):
+        try:
+            post_pairs.append([queryset[i],queryset[i+1]])
+        except:
+            post_pairs.append([queryset[i],None])
+    template_name = 'building_blocks/post-list.html'
+    context = {}
+    context["post_pairs"] = post_pairs
+    context["header_content"] = post_type
+    context["menu"] = MENU
+    return render(request,template_name,context)
 

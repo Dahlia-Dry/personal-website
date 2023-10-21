@@ -1,5 +1,4 @@
 {% block header %}
-
 <body class="u-body u-stick-footer u-xl-mode" data-lang="en"><header class="u-align-center-xs u-border-1 u-border-grey-25 u-clearfix u-header u-palette-3-base u-sticky u-sticky-02bc u-header" id="sec-cdb2"><div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-sheet-1">
     <div class="u-align-center u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
       <div class="u-layout">
@@ -21,7 +20,7 @@
             <div class="u-container-layout u-container-layout-2">
               <p class="u-align-center u-text u-text-white u-text-1">
                 <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-white u-btn-1" href="https://www.dahlia.is/here">dahlia.is /</a>
-                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-white u-btn-1" href="https://www.dahlia.is/{{header_content}}">{{header_content}}</a>
+                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-white u-btn-1" href="https://www.dahlia.is/{{header_content}}" id="header-content">{{header_content}}</a>
               </p>
             </div>
           </div>
@@ -37,30 +36,20 @@
       </div>
       <div class="u-custom-menu u-nav-container">
         <ul class="u-nav u-spacing-20 u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-white" href="http://www.dahlia.is/here" style="padding: 10px;">home</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-white" href="http://www.dahlia.is/currently" style="padding: 10px;">current work</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-white" href="http://www.dahlia.is/at-work" style="padding: 10px;">resumé/skills</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-white" href="http://www.dahlia.is/busy" style="padding: 10px;">project portfolio</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-white" href="http://www.dahlia.is/lost-in-space" style="padding: 10px;">astrophotography</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-white" href="http://www.dahlia.is/thinking" style="padding: 10px;">misc thoughts</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-white" href="http://www.dahlia.is/taking-notes" style="padding: 10px;">obsidian notes</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-white" href="http://www.dahlia.is/outside" style="padding: 10px;">adventures</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-white" href="http://wwww.dahlia.is/in-new-places" style="padding: 10px;">travels</a>
-</li></ul>
+          {% for item in menu %}
+          </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-white" href="https://www.dahlia.is/{{item.post_type}}" style="padding: 10px;">{{item.title}}</a>
+          {% endfor %}
+      </li></ul>
       </div>
       <div class="u-custom-menu u-nav-container-collapse">
         <div class="u-align-center u-container-style u-grey-75 u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
           <div class="u-inner-container-layout u-sidenav-overflow">
             <div class="u-menu-close"></div>
             <ul class="u-align-center u-nav u-popupmenu-items u-spacing-44 u-text-active-palette-3-base u-text-hover-palette-4-base u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="http://www.dahlia.is/here">home</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="http://www.dahlia.is/currently">current work</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="http://www.dahlia.is/at-work">resumé/skills</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="http://www.dahlia.is/busy">project portfolio</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="http://www.dahlia.is/lost-in-space">astrophotography</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="http://www.dahlia.is/thinking">misc thoughts</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="http://www.dahlia.is/taking-notes">obsidian notes</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="http://www.dahlia.is/outside">adventures</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="http://www.dahlia.is/in-new-places">travels</a>
-</li></ul>
+            {% for item in menu %}
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="https://www.dahlia.is/{{item.post_type}}">{{item.title}}</a>
+            {% endfor %}
+            </li></ul>
           </div>
         </div>
         <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>

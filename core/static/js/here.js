@@ -1,3 +1,7 @@
+const data = JSON.parse(
+    document.currentScript.nextElementSibling.textContent
+  );
+
 const header = document.getElementById("header-content");
 
 const tile1 = document.getElementById("tile1");
@@ -22,51 +26,51 @@ const tile9 = document.getElementById("tile9");
 const arrow9 = document.getElementById("arrow9");
 
 tile1.onmouseover = function () {
-    header.innerHTML = "dahlia.is/currently";
+    header.innerHTML = data[0]["path"];
     arrow1.style.opacity = 1;
-    tile1.style.backgroundImage = "url('/static/media/IMG_0475 2.JPG')";
+    tile1.style.backgroundImage = "url('/static/"+data[0]['img_dark']+"')";
 }
 
 tile1.onmouseout = function () {
-    header.innerHTML = "dahlia.is/here";
+    header.innerHTML = "here";
     arrow1.style.opacity = 0;
-    tile1.style.backgroundImage = "url('/static/media/IMG_0475.JPG')";
+    tile1.style.backgroundImage = "url('/static/"+data[0]['img_light']+"')";
 }
 
 tile2.onmouseover = function () {
-    header.innerHTML = "dahlia.is/taking-notes";
+    header.innerHTML = data[1]["path"];
     arrow2.style.opacity = 1;
-    tile2.style.backgroundImage ="url('/static/media/IMG_0631 2.png')";
+    tile2.style.backgroundImage ="url('/static/"+data[1]['img_dark']+"')";
 }
 
 tile2.onmouseout = function () {
-    header.innerHTML = "dahlia.is/here";
+    header.innerHTML = "here";
     arrow2.style.opacity = 0;
-    tile2.style.backgroundImage = "url('/static/media/IMG_0631.png')";
+    tile2.style.backgroundImage = "url('/static/"+data[1]['img_light']+"')";
 }
 
 tile3.onmouseover = function () {
-    header.innerHTML = "dahlia.is/in-new-places";
+    header.innerHTML = data[2]["path"];
     arrow3.style.opacity = 1;
-    tile3.style.backgroundImage = "url('/static/media/DSC_0474 2.jpg')";
+    tile3.style.backgroundImage = "url('/static/"+data[2]['img_dark']+"')";
 }
 
 tile3.onmouseout = function () {
-    header.innerHTML = "dahlia.is/here";
+    header.innerHTML = "here";
     arrow3.style.opacity = 0;
-    tile3.style.backgroundImage = "url('/static/media/DSC_0474.jpg')";
+    tile3.style.backgroundImage =  "url('/static/"+data[2]['img_light']+"')";
 }
 
 tile4.onmouseover = function () {
-    header.innerHTML = "dahlia.is/thinking";
+    header.innerHTML = data[3]["path"];
     arrow4.style.opacity = 1;
-    tile4.style.backgroundImage = "url('/static/media/82349A5F-C38C-42E1-86E5-3ECE762EFDED 2.jpg')";
+    tile4.style.backgroundImage = "url('/static/"+data[3]['img_dark']+"')";
 }
 
 tile4.onmouseout = function () {
-    header.innerHTML = "dahlia.is/here";
+    header.innerHTML = "here";
     arrow4.style.opacity = 0;
-    tile4.style.backgroundImage = "url('/static/media/82349A5F-C38C-42E1-86E5-3ECE762EFDED.JPG')";
+    tile4.style.backgroundImage =  "url('/static/"+data[3]['img_light']+"')";
 }
 
 // tile5.onmouseover = function () {
@@ -82,49 +86,57 @@ tile4.onmouseout = function () {
 // }
 
 tile6.onmouseover = function () {
-    header.innerHTML = "dahlia.is/lost-in-space";
+    header.innerHTML = data[4]["path"];
     arrow6.style.opacity = 1;
-    tile6.style.backgroundImage = "url('/static/media/m27-colorized-sharpened 2.jpg')";
+    tile6.style.backgroundImage = "url('/static/"+data[4]['img_dark']+"')";
 }
 
 tile6.onmouseout = function () {
-    header.innerHTML = "dahlia.is/here";
+    header.innerHTML = "here";
     arrow6.style.opacity = 0;
-    tile6.style.backgroundImage ="url('/static/media/m27-colorized-sharpened.JPG')";
+    tile6.style.backgroundImage = "url('/static/"+data[4]['img_light']+"')";
 }
 
 tile7.onmouseover = function () {
-    header.innerHTML = "dahlia.is/outside";
+    header.innerHTML = data[5]["path"];
     arrow7.style.opacity = 1;
-    tile7.style.backgroundImage = "url('/static/media/F48E1EF1-3007-4E74-9CAA-2AA379AC99BE 2.jpg')";
+    tile7.style.backgroundImage = "url('/static/"+data[5]['img_dark']+"')";
 }
 
 tile7.onmouseout = function () {
-    header.innerHTML = "dahlia.is/here";
+    header.innerHTML = "here";
     arrow7.style.opacity = 0;
-    tile7.style.backgroundImage = "url('/static/media/F48E1EF1-3007-4E74-9CAA-2AA379AC99BE.jpg')";
+    tile7.style.backgroundImage =  "url('/static/"+data[5]['img_light']+"')";
 }
 
 tile8.onmouseover = function () {
-    header.innerHTML = "dahlia.is/busy";
+    header.innerHTML = data[6]["path"];
     arrow8.style.opacity = 1;
-    tile8.style.backgroundImage = "url('/static/media/IMG_1575 2.jpg')";
+    tile8.style.backgroundImage = "url('/static/"+data[6]['img_dark']+"')";
 }
 
 tile8.onmouseout = function () {
-    header.innerHTML = "dahlia.is/here";
+    header.innerHTML = "here";
     arrow8.style.opacity = 0;
-    tile8.style.backgroundImage = "url('/static/media/IMG_1575.jpg')";
+    tile8.style.backgroundImage =  "url('/static/"+data[6]['img_light']+"')";
 }
 
 tile9.onmouseover = function () {
-    header.innerHTML = "dahlia.is/at-work";
+    header.innerHTML = data[7]["path"];
     arrow9.style.opacity = 1;
-    tile9.style.backgroundImage = "url('/static/media/IMG_2011 2.jpg')";
+    tile9.style.backgroundImage = "url('/static/"+data[7]['img_dark']+"')";
 }
 
 tile9.onmouseout = function () {
-    header.innerHTML = "dahlia.is/here";
+    header.innerHTML = "here";
     arrow9.style.opacity = 0;
-    tile9.style.backgroundImage = "url('/static/media/IMG_2011.jpg')";
+    tile9.style.backgroundImage =  "url('/static/"+data[7]['img_light']+"')";
+}
+
+map.onmouseover = function () {
+    header.innerHTML = "dahlia.is/where?";
+}
+
+map.onmouseout = function () {
+    header.innerHTML = "dahlia.is/here";
 }

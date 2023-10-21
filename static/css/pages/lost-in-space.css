@@ -21,7 +21,7 @@
 
 .u-section-2 .u-gallery-1 {
   width: 1022px;
-  height: 684px;
+  height: 800px;
   grid-gap: 10px 10px;
   margin: 52px auto 60px;
 }
@@ -70,12 +70,12 @@
 
 @media (max-width: 991px) {
   .u-section-2 .u-sheet-1 {
-    min-height: 653px;
+    min-height: 800px;
   }
 
   .u-section-2 .u-gallery-1 {
     width: 622px;
-    height: 521px;
+    height: 800px;
     margin-top: 66px;
   }
 }
@@ -86,7 +86,7 @@
   }
 
   .u-section-2 .u-gallery-1 {
-    height: 461px;
+    height: 800px;
     margin-top: 60px;
     margin-bottom: 53px;
     margin-right: initial;
@@ -97,11 +97,11 @@
 
 @media (max-width: 575px) {
   .u-section-2 .u-sheet-1 {
-    min-height: 450px;
+    min-height: 800px;
   }
 
   .u-section-2 .u-gallery-1 {
-    height: 330px;
+    height: 800px;
     margin-bottom: 60px;
     width: auto;
     margin-right: initial;

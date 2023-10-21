@@ -40111,7 +40111,7 @@ a.u-link.u-text-hover-grey-90:hover {
 }
 
 .u-header .u-layout-wrap-1 {
-  margin: 0 auto 2px;
+  margin: 1px auto;
 }
 
 .u-header .u-layout-cell-1 {
@@ -40126,7 +40126,7 @@ a.u-link.u-text-hover-grey-90:hover {
   width: 200px;
   height: auto;
   min-height: 46px;
-  margin: 7px auto 0;
+  margin: 0 auto;
 }
 
 .u-header .u-search-icon-1 {
@@ -40149,11 +40149,10 @@ a.u-link.u-text-hover-grey-90:hover {
 .u-header .u-text-1 {
   font-weight: 700;
   font-size: 1.25rem;
-  margin: 6px 0 0;
+  margin: 0;
 }
 
 .u-header .u-btn-1 {
-  background-image: none;
   padding: 0;
 }
 
@@ -40415,6 +40414,7 @@ a.u-link.u-text-hover-grey-90:hover {
 .u-footer .u-btn-1 {
   background-image: none;
   font-size: 0.75rem;
+  font-weight: 700;
   padding: 0;
 }
 
@@ -40589,5 +40589,5 @@ a.u-link.u-text-hover-grey-90:hover {
 }
 
  /*begin-variables base-font-size*/ 
- html { font-size: 24px; }
+ html { font-size: 20px; }
  /*end-variables base-font-size*/

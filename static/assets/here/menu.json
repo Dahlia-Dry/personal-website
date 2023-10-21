@@ -1,0 +1,9 @@
+[{"post_type":"currently", "title": "current work"},
+{"post_type": "applying", "title": "resumé"},
+{"post_type": "researching", "title": "research portfolio"},
+{"post_type": "making", "title": "project portfolio"},
+{"post_type": "in-the-news", "title": "news articles/publications"},
+{"post_type": "lost-in-space", "title": "astrophotography"},
+{"post_type": "on-a-bike", "title": "bike adventures"},
+{"post_type": "in-new-places", "title": "travels etc"}
+]

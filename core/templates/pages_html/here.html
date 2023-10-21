@@ -1,0 +1,113 @@
+{% load static %}
+{% load index %}
+<!DOCTYPE html>
+<html style="font-size: 24px;" lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="post-list">
+    <meta name="description" content="">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'css/building_blocks/nicepage.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'css/building_blocks/page-template.css' %}" media="screen">
+    <script class="u-script" type="text/javascript" src="{% static '/js/jquery.js' %}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{% static '/js/nicepage.js' %}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{% static '/js/here.js' %}" defer=""></script>
+    {{ TILES|json_script }}
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i">
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": ""
+}</script>
+    <meta name="theme-color" content="#73a3de">
+    <meta property="og:title" content="current Research">
+    <meta property="og:type" content="website">
+  </head>
+  <body class="u-body u-xl-mode" data-lang="en">
+    {% block header %} {% include 'building_blocks/header.html' %} {% endblock header %}
+
+    {{BIO|safe}}
+
+    <section class="u-clearfix u-palette-2-base u-section-11">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-gutter-56 u-layout-wrap u-layout-wrap-1">
+            <div class="u-layout">
+              <div class="u-layout-col">
+                <div class="u-size-20">
+                  <div class="u-layout-row">
+                    <div class="u-container-style u-image u-layout-cell u-size-20 u-image-1" id="tile1" data-image-width="3024" data-image-height="3024" data-href="../{{TILES.0.path}}" style="background-image: url('/static/{{TILES.0.img_light}}');">
+                      <div class="u-container-layout u-valign-middle u-container-layout-1"><span class="u-file-icon u-icon u-icon-rectangle u-text-palette-4-base u-icon-1" id = "arrow1" style="opacity: 0;"><img src="{% static 'assets/here/724954-087d0e5b.png' %}"></span>
+                      </div>
+                    </div>
+                    <div class="u-container-style u-image u-layout-cell u-size-20 u-image-2" id="tile2" data-image-width="3024" data-image-height="3024" data-href="../{{TILES.1.path}}" style="background-image: url('/static/{{TILES.1.img_light}}');">
+                      <div class="u-container-layout u-valign-middle u-container-layout-2"><span class="u-file-icon u-icon u-icon-rectangle u-text-palette-4-base u-icon-1" id = "arrow2" style="opacity: 0;"><img src="{% static 'assets/here/724954-087d0e5b.png' %}"></span>
+                    </div>
+                    </div>
+                    <div class="u-container-style u-image u-layout-cell u-size-20 u-image-3" id="tile3" data-image-width="3995" data-image-height="3995" data-href="../{{TILES.2.path}}" style="background-image: url('/static/{{TILES.2.img_light}}');">
+                      <div class="u-container-layout u-valign-middle u-container-layout-3"><span class="u-file-icon u-icon u-icon-rectangle u-text-palette-4-base u-icon-1" id = "arrow3" style="opacity: 0;"><img src="{% static 'assets/here/724954-087d0e5b.png' %}"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="u-size-20">
+                  <div class="u-layout-row">
+                    <div class="u-container-style u-image u-layout-cell u-size-20 u-image-4" id="tile4" data-image-width="1440" data-image-height="1440" data-href="../{{TILES.3.path}}" style="background-image: url('/static/{{TILES.3.img_light}}');">
+                      <div class="u-container-layout u-valign-middle u-container-layout-4"><span class="u-file-icon u-icon u-icon-rectangle u-text-palette-4-base u-icon-1" id = "arrow4" style="opacity: 0;"><img src="{% static 'assets/here/724954-087d0e5b.png' %}"></span>
+                    </div>
+                    </div>
+                    <div class="u-container-style u-layout-cell u-size-20 u-layout-cell-5">
+                      <div class="u-container-layout u-valign-middle-lg u-container-layout-5">
+                        <div class="u-carousel u-expanded-width u-gallery u-gallery-slider u-layout-carousel u-lightbox u-no-transition u-show-text-on-hover u-gallery-1" data-interval="5000" data-u-ride="carousel" id="carousel-7b90">
+                          <div class="u-carousel-inner u-gallery-inner" role="listbox">
+                            <div class="u-active u-carousel-item u-effect-fade u-gallery-item u-carousel-item-1" data-href="{{GALLERY.0.link}}">
+                              <div class="u-back-slide">
+                                <img class="u-back-image u-expanded" src="{{GALLERY.0.image.url}}">
+                              </div>
+                            </div>
+                            {% for photo in GALLERY %}
+                            {% if not forloop.first %}
+                            <div class="u-carousel-item u-effect-fade u-gallery-item u-carousel-item-2" data-href="{{photo.link}}">
+                              <div class="u-back-slide">
+                                <img class="u-back-image u-expanded" src="{{photo.image.url}}" >
+                              </div>
+                              <div class="u-align-center u-container-align-left u-over-slide u-shading u-valign-middle u-over-slide-2">
+                              </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="u-container-style u-image u-layout-cell u-size-20 u-image-5" id="tile6" data-image-width="950" data-image-height="950" data-href="../{{TILES.4.path}}" style="background-image: url('/static/{{TILES.4.img_light}}');">
+                      <div class="u-container-layout u-valign-middle u-container-layout-6"><span class="u-file-icon u-icon u-icon-rectangle u-text-palette-4-base u-icon-1" id = "arrow6" style="opacity: 0;"><img src="{% static 'assets/here/724954-087d0e5b.png' %}"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="u-size-20">
+                  <div class="u-layout-row">
+                    <div class="u-container-style u-image u-layout-cell u-size-20 u-image-6" id="tile7" data-image-width="1440" data-image-height="1440" data-href="../{{TILES.5.path}}" style="background-image: url('/static/{{TILES.5.img_light}}');">
+                      <div class="u-container-layout u-valign-middle u-container-layout-7"><span class="u-file-icon u-icon u-icon-rectangle u-text-palette-4-base u-icon-1" id = "arrow7" style="opacity: 0;"><img src="{% static 'assets/here/724954-087d0e5b.png' %}"></span>
+                      </div>
+                    </div>
+                    <div class="u-container-style u-image u-layout-cell u-size-20 u-image-7" id="tile8" data-image-width="1121" data-image-height="1121" data-href="../{{TILES.6.path}}" style="background-image: url('/static/{{TILES.6.img_light}}');">
+                      <div class="u-container-layout u-valign-middle u-container-layout-8"><span class="u-file-icon u-icon u-icon-rectangle u-text-palette-4-base u-icon-1" id = "arrow8" style="opacity: 0;"><img src="{% static 'assets/here/724954-087d0e5b.png' %}"></span>
+                      </div>
+                    </div>
+                    <div class="u-container-style u-image u-layout-cell u-size-20 u-image-8" id="tile9" data-image-width="1120" data-image-height="1120" data-href="../{{TILES.7.path}}" style="background-image: url('/static/{{TILES.7.img_light}}');">
+                      <div class="u-container-layout u-valign-middle u-container-layout-9"><span class="u-file-icon u-icon u-icon-rectangle u-text-palette-4-base u-icon-1" id = "arrow9" style="opacity: 0;"><img src="{% static 'assets/here/724954-087d0e5b.png' %}"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </section>
+    
+    {% block footer %} {% include 'building_blocks/footer.html' %} {% endblock footer %}
+  
+</body></html>

@@ -1,24 +1,23 @@
 from django.urls import path,re_path
+import json
+import copy
+from core.models import *
 
 from . import views
 
-urlpatterns = [
-    path('taking-notes/',views.notes,name='notes'),
-    path('in-new-places/',views.places,name='places'),
-    path('thinking/',views.thinking,name='thinking'),
-    path('outside/',views.outside,name='outside'),
-] 
+MENU= json.loads(open('core/static/assets/here/menu.json').read())
 
-home_patterns = [path('here/', views.home, name='home'),
-                 path('',views.redirect_home,name='redirect_home')]
+list_views = ['currently','researching','on-a-bike']
+detail_views = ['currently','researching','making','on-a-bike']
 
-list_view_patterns = [path('lost-in-space/', views.astrophoto_list.as_view(), name='space'),
-                      path('currently/', views.create_list_view([6]).as_view(), name='current_projects'),
-                      path('busy/',views.create_list_view([0,6]).as_view(),name='projects'),
-                      ]
 
-detail_view_patterns = [path('busy/<slug>',views.create_detail_view(0),name='busy_detail'),
-                        path('currently/<slug>',views.create_detail_view(6),name='currently_detail'),
-                        path('at-work/',views.job,name='job')]
+home_patterns = [path('',views.redirect_home,name='redirect_home'),
+                 path('here',views.home_view,name='here')]
 
-urlpatterns= urlpatterns+home_patterns+list_view_patterns+detail_view_patterns
+list_view_patterns = [path(f"{l}",views.list_view,name=f"{l}_post_list") for l in list_views]
+
+detail_view_patterns = [path(f"{d}/<slug>",views.detail_view,name=f"{d}_post_detail") for d in detail_views]
+
+astro_patterns = [path('lost-in-space',views.astrophoto_gallery,name='astrophoto')] + [path(f'lost-in-space/{a.uid}',views.astrophoto_indiv,name=f'astro_{a.uid}') for a in AstroPhoto.objects.all()]
+
+urlpatterns= home_patterns+list_view_patterns+detail_view_patterns+astro_patterns
