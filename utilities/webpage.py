@@ -7,6 +7,7 @@ import json
 
 from .webimage import *
 
+print('CWD',os.getcwd())
 b= open('core/templates/building_blocks/block.html','r')
 br=b.readlines()
 b.close()
