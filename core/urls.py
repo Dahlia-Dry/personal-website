@@ -2,10 +2,11 @@ from django.urls import path,re_path
 import json
 import copy
 from core.models import *
+from django.conf import settings
 
 from . import views
 
-MENU= json.loads(open('core/static/assets/here/menu.json').read())
+MENU= json.loads(open(os.path.join(settings.STATIC_ROOT,'assets/here/menu.json')).read())
 
 list_views = ['currently','researching','on-a-bike']
 detail_views = ['currently','researching','making','on-a-bike']

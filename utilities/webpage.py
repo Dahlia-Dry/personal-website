@@ -4,11 +4,12 @@ import time
 from django.template.loader import render_to_string
 import re
 import json
+from django.conf import settings
 
 from .webimage import *
 
 print('CWD',os.getcwd())
-b= open('core/templates/building_blocks/block.html','r')
+b= open(os.path.join(settings.BASE_DIR,'core/templates/building_blocks/block.html'),'r')
 br=b.readlines()
 b.close()
 startblock =''.join(br[:2])

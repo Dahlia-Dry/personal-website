@@ -2,12 +2,13 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.views import generic
 from .models import *
+from django.conf import settings
 
 import sys
 sys.path.append('..')
 from utilities.webpage import *
 
-MENU= json.loads(open('core/static/assets/here/menu.json').read())
+MENU= json.loads(open(os.path.join(settings.STATIC_ROOT,'assets/here/menu.json')).read())
 
 def redirect_home(request):
     response = redirect('/here')
