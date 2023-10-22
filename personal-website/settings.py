@@ -28,7 +28,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['.dahlia.is',
                  '.webapp-1551455.pythonanywhere.com',
-                 '.dahliadry.pythonanywhere.com']
+                 '.dahliadry.pythonanywhere.com',
+                 '127.0.0.1']
 
 
 # Application definition

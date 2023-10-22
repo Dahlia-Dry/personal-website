@@ -26,6 +26,9 @@ def home_view(request):
         context[key] = post_data.content[key]
     return render(request, template_name, context)
 
+def custom_404(request, exception):
+    return render(request, 'pages_html/404.html', status=404)
+
 def astrophoto_gallery(request):
     queryset = AstroPhoto.objects.all()
     template_name = 'pages_html/lost-in-space.html'
