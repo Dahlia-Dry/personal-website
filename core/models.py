@@ -86,6 +86,7 @@ class AstroPhoto(Photo):
         #print(self.inst_caption)
         self.image='/'.join(self.image.url.split('/')[-2:])
         self.link = f'https://www.dahlia.is/lost-in-space#&gid=1&pid={list(AstroPhoto.objects.all()).index(self)+1}'
+        print(self.link)
         super(AstroPhoto, self).save(*args, **kwargs)
 class Post(models.Model):
     title = models.CharField(max_length=200)

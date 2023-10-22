@@ -65,8 +65,7 @@ def update_imgs():
     for obj in delete:
         obj.delete()
     #save all AstroPhotos to make sure gallery links are updated
-    astro = AstroPhoto.objects.all()
-    for a in astro:
+    for a in AstroPhoto.objects.all():
         a.save()
 
 def update_posts():
