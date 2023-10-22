@@ -67,7 +67,6 @@ class Instrument(models.Model):
     link=models.CharField(max_length=200,blank=True,null=True)
 
 class AstroPhoto(Photo):
-    uid = models.UUIDField(default=uuid.uuid4, editable=False) 
     instruments = models.ManyToManyField(Instrument,blank=True)
     catalog_name = models.TextField(blank=True)
     info_link = models.TextField(blank=True)

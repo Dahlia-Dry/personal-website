@@ -35,15 +35,6 @@ def astrophoto_gallery(request):
     context['menu'] = MENU
     return render(request,template_name,context)
 
-def astrophoto_indiv(request):
-    u = request.path.split('/')[-1]
-    a = AstroPhoto.objects.get(uid=u)
-    context = {}
-    context['photo'] = a
-    context["header_content"] = 'lost-in-space'
-    context["menu"] = MENU
-    return render(request,'pages_html/astrophoto.html',context)
-
 def detail_view(request):
     if not request.path.endswith('/'):
         slug = request.path.split('/')[-1]

@@ -14,7 +14,7 @@ __BIO__
 ### Welcome to my little corner of the internet :)
 !endblock
 !text+img
-I'm a recent MIT grad with double majors in physics and electrical engineering and a minor in Spanish. Things I love include my aggressively blue foldy bike, running in the rain, spending long nights at telescopes, and collecting cozy sweaters. I'm working to leverage my technical skillset in the fight to protect water as a human right and preserve earth's waterways as a global commons for generations to come. My plan is to go wherever that takes me, and make sure to have plenty of fun along the way.
+I'm a [recent MIT grad](https://impactclimate.mit.edu/2023/09/27/student-spotlight-mcsc-scholar-dahlia-dry/) with double majors in physics and electrical engineering and a minor in Spanish. Currently, I'm living in Copenhagen and working at a startup called [TEGnology](https://www.tegnology.dk). Things I love include my aggressively blue foldy bike, running in the rain, spending long nights at telescopes, and collecting cozy sweaters. I'm passionate about working at the interface between software and hardware to build the data infrastructures that will be the backbone of a sustainable future. My plan is to go wherever that takes me, and make sure to have plenty of fun along the way.
 !img here/profile.JPG --nocaption --notitle
 __ENDBIO__
 __GALLERY__
