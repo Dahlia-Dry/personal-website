@@ -8,17 +8,20 @@ from . import views
 
 MENU= json.loads(open(os.path.join(settings.STATIC_ROOT,'assets/here/menu.json')).read())
 
-list_views = ['currently','researching','on-a-bike']
+root_views = ['here','in-the-news','lost-in-space']
+list_views = ['currently','researching','making','on-a-bike']
 detail_views = ['currently','researching','making','on-a-bike']
 
 
 home_patterns = [path('',views.redirect_home,name='redirect_home'),
-                 path('here',views.home_view,name='here'),
                  path('here/',views.redirect_home,name='here/')]
+
+root_view_patterns = [path(f"{r}",views.root_view,name=f"{r}") for r in root_views]
 
 list_view_patterns = [path(f"{l}",views.list_view,name=f"{l}_post_list") for l in list_views]
 
 detail_view_patterns = [path(f"{d}/<slug>",views.detail_view,name=f"{d}_post_detail") for d in detail_views]
 
 astro_patterns = [path('lost-in-space',views.astrophoto_gallery,name='astrophoto')]
-urlpatterns= home_patterns+list_view_patterns+detail_view_patterns+astro_patterns
+
+urlpatterns= home_patterns+root_view_patterns+list_view_patterns+detail_view_patterns

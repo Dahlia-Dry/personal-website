@@ -1,7 +1,6 @@
 ---
 title: Swept Source Raman Spectroscopy for Persistent Monitoring of Water Quality
 slug: sweptsourceraman-at-rle
-summary: Engineering a more portable and cost effective implementation of Raman Spectroscopy via tunable source laser that can be used for in-situ, continuous monitoring of target analytes (e.g. nitrate, nitrite, sulfate) in water.
 cover_photo: rle/rle-cover.JPG
 created_on: 2023-12-07
 location: MIT

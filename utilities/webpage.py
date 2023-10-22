@@ -75,6 +75,15 @@ class webPage(object):
                         value.append(startblock)
                     elif item.startswith('!endblock'):
                         value.append(endblock)
+                    elif item.startswith('!linkbox'):
+                        text = ""
+                        headline = next(contents,'')
+                        item = next(contents,'')
+                        while not item.startswith('!link'):
+                            text += markdown.markdown(item)
+                            item = next(contents,'')
+                        link = item.strip().split(' ')[1]
+                        value.append(render_to_string('building_blocks/linkbox.html',{'text':text,'headline':headline,'link':link}))
                     elif item.startswith('!pdf'):
                         value.append(render_to_string('building_blocks/pdf.html',{'pdf_file':item.split(' ')[1]}))
                     elif item.startswith('!video'):

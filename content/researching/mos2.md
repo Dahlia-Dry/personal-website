@@ -1,7 +1,6 @@
 ---
 title: Fabricating Thin Film Molybdenum Disulfide Transistors at MIT.nano
 slug: flexible-transistors-at-mit-nano
-summary: Final project for 6.2540 (Nanotechnology From Atoms to Systems)
 cover_photo: mos2/mos2-cover.JPG
 created_on: 2023-12-07
 location: MIT
@@ -12,7 +11,6 @@ __CONTENT__
 !block
 In Fall 2022, I took a class called 6.2540 (Nanotechnology: From Atoms to Systems). After a semester spent doing a bunch of [super cool labs](https://www.dahlia.is/researching/quantum-dots-at-mit-nano), my group chose to do a final project that involved fabricating thin film molybdenum disulfide (MOS2) transistors for applications in flexible electronics and sensing. We went on to present our work at MIT's Microsystems Annual Research Conference (MARC) in January 2023. On this page you'll find our conference poster and some other photos and figures from the project. 
 !endblock
-!figs mos2/mos2-1.png mos2/mos2-2.png
-!figs mos2/mos2-3.png mos2/mos2-4.png
+!figs mos2/mos2-1.png mos2/mos2-2.png mos2/mos2-3.png mos2/mos2-4.png --notitle
 !pdf mos2/mos2.pdf
 __ENDCONTENT__

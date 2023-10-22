@@ -75,7 +75,7 @@ class AstroPhoto(Photo):
         inst_str = []
         for inst in self.instruments.all():
             if inst.link is not None:
-                inst_str.append(f"""<a href="{inst.link}">{inst.name_short}</a>""")
+                inst_str.append(f"""<a href="{inst.link}" target="_blank">{inst.name_short}</a>""")
             else:
                 inst_str.append(f"{inst.name_short}")
         return ','.join(inst_str)
@@ -90,7 +90,6 @@ class AstroPhoto(Photo):
 class Post(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True,blank=True,null=True)
-    summary = models.TextField(blank=True)
     content=models.FilePathField(path='content/',recursive=True)
     cover_photo = models.ForeignKey(Photo,on_delete=models.CASCADE)
     post_type = models.CharField(max_length=200)

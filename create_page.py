@@ -4,6 +4,8 @@ import sys
 def create_page(path):
     md_template = open('core/templates/pages_markdown/base.md').read()
     print(os.path.join('content/',path))
+    if not os.path.exists(os.path.join('content/',os.path.dirname(path))):
+        os.system(f"mkdir {os.path.join('content/',os.path.dirname(path))}")
     f=open(os.path.join('content/',path),'w')
     f.write(md_template)
     f.close()

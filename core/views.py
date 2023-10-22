@@ -14,9 +14,13 @@ def redirect_home(request):
     response = redirect('/here')
     return response
 
-def home_view(request):
+def root_view(request):
     context ={}
-    context["post"] = Post.objects.get(slug='')
+    if not request.path.endswith('/'):
+        post_type = request.path.split('/')[-1]
+    else:
+        post_type = request.path.split('/')[-2]
+    context["post"] = Post.objects.get(slug=post_type)
     post_data = webPage(context['post'].content)
     template_dir = os.path.split(post_data.meta['html'])
     template_name = os.path.join(template_dir[0].split('/')[-1],template_dir[1])
@@ -41,7 +45,7 @@ def astrophoto_gallery(request):
     context['menu'] = MENU
     return render(request,template_name,context)
 
-def detail_view(request):
+def detail_view(request,slug):
     if not request.path.endswith('/'):
         slug = request.path.split('/')[-1]
     else:
@@ -57,7 +61,7 @@ def detail_view(request):
         context[key] = post_data.content[key]
     return render(request, template_name, context)
 
-def list_view(request,):
+def list_view(request):
     if not request.path.endswith('/'):
         post_type = request.path.split('/')[-1]
     else:

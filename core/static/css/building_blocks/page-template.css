@@ -816,6 +816,7 @@
 .u-section-11 .u-image-2 {
   min-height: 402px;
   background-image: url("images/business-cards-mockup_1389-1137.jpg");
+  transition-duration: 1.5s;
   background-position: 50% 50%;
   transform: translateX(0px) translateY(0px) scale(1) rotate(0deg);
 }
@@ -1203,4 +1204,73 @@
     margin-top: 60px;
     margin-bottom: 60px;
   }
+}.u-section-13 .u-sheet-1 {
+  min-height: 272px;
+}
+
+.u-section-13 .u-group-1 {
+  min-height: 222px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: auto;
+  transition-duration: 0.5s;
+  box-shadow: -2px 0 0 0 rgba(0,0,0,0);
+  text-shadow: 0px 0px 0px rgba(0,0,0,0);
+  transform: translateX(0px) translateY(0px) scale(1) rotate(0deg);
+}
+
+.u-section-13 .u-container-layout-1 {
+  padding: 0 16px;
+}
+
+.u-section-13 .u-text-1 {
+  margin: 10px 7px;
+}
+
+@media (max-width: 1199px) {
+  .u-section-13 .u-group-1 {
+    height: auto;
+  }
+
+  .u-section-13 .u-text-1 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-13 .u-container-layout-1 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.u-section-13 .u-group-1,
+.u-section-13 .u-group-1:before,
+.u-section-13 .u-group-1 > .u-container-layout:before {
+  transition-property: fill, color, background-color, stroke-width, border-style, border-width, border-top-width, border-left-width, border-right-width, border-bottom-width, custom-border, borders, box-shadow, text-shadow, opacity, border-radius, stroke, border-color, font-size, font-style, font-weight, text-decoration, letter-spacing, transform, background-image, image-zoom, background-size, background-position;
+}
+
+.u-section-13 .u-group-1.u-group-1.u-group-1:hover:before {
+  background-color: #6582a5 !important;
+}
+
+.u-section-13 .u-group-1.u-group-1.u-group-1:hover {
+  box-shadow: 0px 0px 0px  rgba(0,0,0,0) !important;
+  transform: translateX(0px) translateY(px) scale(1) rotate(0deg) !important;
+  text-shadow: 0px 0px 0px rgba(0,0,0,0) !important;
+}
+
+.u-section-13 .u-group-1.u-group-1.u-group-1.hover {
+  box-shadow: 0px 0px 0px  rgba(0,0,0,0) !important;
+  transform: translateX(0px) translateY(px) scale(1) rotate(0deg) !important;
+  text-shadow: 0px 0px 0px rgba(0,0,0,0) !important;
+}
+
+.u-section-13 .u-container-layout:hover .u-group-1 {
+  transform: rotate(0deg) scale(1) translateX(0px) translateY(0px) !important;
+}
+
+.u-container-layout.hover .u-section-13 .u-group-1 {
+  transform: rotate(0deg) scale(1) translateX(0px) translateY(0px) !important;
 }

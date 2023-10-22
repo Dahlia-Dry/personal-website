@@ -1,7 +1,6 @@
 ---
 title: test
 slug: test
-summary:
 cover_photo: mos2/mos2-1.png
 created_on: !today
 location: MIT

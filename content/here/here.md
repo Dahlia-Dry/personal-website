@@ -1,7 +1,6 @@
 ---
-title: here
-slug: 
-summary:
+title: homepage
+slug: here
 cover_photo: here/profile.JPG
 created_on: !today
 location: MIT
@@ -18,7 +17,7 @@ I'm a [recent MIT grad](https://impactclimate.mit.edu/2023/09/27/student-spotlig
 !img here/profile.JPG --nocaption --notitle
 __ENDBIO__
 __GALLERY__
-!python Photo.objects.filter(show_on_homepage=True)
+!python Photo.objects.order_by('?').filter(show_on_homepage=True)
 __ENDGALLERY__
 __TILES__
 !readjson here/tiles.json
