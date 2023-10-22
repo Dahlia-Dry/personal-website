@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-wv_fx0v0@(fiw9*0r$e+8!=g))@3@+z&*9$k9*7ay($u_6xh3r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['dahlia.is']
+ALLOWED_HOSTS = ['dahlia.is',
+                 'webapp-1551455.pythonanywhere.com']
 
 
 # Application definition
