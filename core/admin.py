@@ -7,6 +7,10 @@ class Location_admin(admin.ModelAdmin):
     list_display = ['name']
     search_fields = ['name']
 
+class Instrument_admin(admin.ModelAdmin):
+    list_display = ['name','name_short']
+    search_fields = ['name','name_short']
+
 class Post_admin(admin.ModelAdmin):
     list_display = ('title', 'slug','created_on')
     list_filter = ("post_type",)
@@ -31,6 +35,7 @@ class AstroPhoto_admin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Post,Post_admin)
 admin.site.register(Location,Location_admin)
+admin.site.register(Instrument,Instrument_admin)
 admin.site.register(Photo,Photo_admin)
 admin.site.register(AstroPhoto,AstroPhoto_admin)
 admin.site.register(Album,Album_admin)

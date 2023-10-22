@@ -39,10 +39,8 @@
             </div>
             <div class="u-container-align-left u-over-slide u-palette-3-dark-1 u-valign-top-md u-valign-top-sm u-valign-top-xs u-over-slide-1">
               <h5 class="u-align-left u-gallery-heading" style="width: 1002px; margin-right: auto; margin-left: 0px;">{{photo_list.0.title}}</h5>
-              <p class="u-align-left u-gallery-text" style="width: 1002px; margin-right: auto; margin-left: 0px; font-size: 0.75rem;">{{photo_list.0.created_on}} | {{photo_list.0.location.name}} | {{photo_list.0.instruments}}</p>
-              {% if photo_list.0.info_link != "" %}
-                  <p class="u-align-left u-gallery-text" style="width: 1002px; margin-right: auto; margin-left: 0px;"><a href="{{photo_list.0.info_link}}" target="_blank"> About {{photo_list.0.catalog_name}}</a></p>
-                {% endif %}
+              <p class="u-align-left u-gallery-text" style="width: 1002px; margin-right: auto; margin-left: 0px; font-size: 0.75rem;">{{photo_list.0.created_on}} | {{photo_list.0.location.name}} | {% if photo_list.0.info_link != "" %} <a href="{{photo_list.0.info_link}}" target="_blank"> {{photo_list.0.catalog_name}} {% endif %}</a></p>
+              <p class="u-align-left u-gallery-text" style="width: 1002px; margin-right: auto; margin-left: 0px;">{{photo_list.0.caption|safe}} {{photo_list.0.inst_caption|safe}}</p>
             </div>
             </div>
           {% for photo in photo_list %}
@@ -51,14 +49,12 @@
             <div class="u-back-slide" data-image-width="1280" data-image-height="853">
               <img class="u-back-image u-expanded u-image-contain" src="{{photo.image.url}}">
             </div>
-<div class="u-container-align-left u-over-slide u-palette-3-dark-1 u-valign-top-md u-valign-top-sm u-valign-top-xs u-over-slide-1">
+            <div class="u-container-align-left u-over-slide u-palette-3-dark-1 u-valign-top-md u-valign-top-sm u-valign-top-xs u-over-slide-1">
               <h5 class="u-align-left u-gallery-heading" style="width: 1002px; margin-right: auto; margin-left: 0px;">{{photo.title}}</h5>
-              <p class="u-align-left u-gallery-text" style="width: 1002px; margin-right: auto; margin-left: 0px; font-size: 0.75rem;">{{photo.created_on}} | {{photo.location.name}} | {{photo.instruments}}</p>
-              {% if photo.info_link != "" %}
-                  <p class="u-align-left u-gallery-text" style="width: 1002px; margin-right: auto; margin-left: 0px;"><a href="{{photo.info_link}}" target="_blank"> About {{photo.catalog_name}}</a></p>
-                {% endif %}
+              <p class="u-align-left u-gallery-text" style="width: 1002px; margin-right: auto; margin-left: 0px; font-size: 0.75rem;">{{photo.created_on}} | {{photo.location.name}} {% if photo.info_link != "" %} | <a href="{{photo.info_link}}" target="_blank"> {{photo.catalog_name}} {% endif %}</a></p>
+              <p class="u-align-left u-gallery-text" style="width: 1002px; margin-right: auto; margin-left: 0px;">{{photo.caption|safe}}{{photo.inst_caption|safe}}</p>
           </div>
-</div>
+        </div>
         {% endif %}
           {% endfor %}
         </div>

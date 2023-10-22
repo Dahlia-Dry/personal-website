@@ -21,5 +21,4 @@ list_view_patterns = [path(f"{l}",views.list_view,name=f"{l}_post_list") for l i
 detail_view_patterns = [path(f"{d}/<slug>",views.detail_view,name=f"{d}_post_detail") for d in detail_views]
 
 astro_patterns = [path('lost-in-space',views.astrophoto_gallery,name='astrophoto')] + [path(f'lost-in-space/{a.uid}',views.astrophoto_indiv,name=f'astro_{a.uid}') for a in AstroPhoto.objects.all()]
-
 urlpatterns= home_patterns+list_view_patterns+detail_view_patterns+astro_patterns

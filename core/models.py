@@ -6,14 +6,6 @@ import os
 import datetime
 import uuid
 
-TYPES = ((0,'researching'),
-        (1,'on-a-bike'),
-        (2,'in-new-places'),
-        (3,'lost-in-space'),
-        (4,'thinking'),
-        (5,'applying'),
-        (6,'currently'))
-
 def get_date_taken(path):
     exif = Image.open(path)._getexif()
     if not exif:
@@ -68,17 +60,33 @@ class Photo(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Instrument(models.Model):
+    name = models.CharField(max_length=200)
+    name_short = models.CharField(max_length=200,blank=True,null=True)
+    link=models.CharField(max_length=200,blank=True,null=True)
 
 class AstroPhoto(Photo):
     uid = models.UUIDField(default=uuid.uuid4, editable=False) 
-    instruments = models.TextField(blank=True)
+    instruments = models.ManyToManyField(Instrument,blank=True)
     catalog_name = models.TextField(blank=True)
     info_link = models.TextField(blank=True)
+    inst_caption = models.TextField(default='',blank=True,null=True)
+    def instruments_to_str(self):
+        inst_str = []
+        for inst in self.instruments.all():
+            if inst.link is not None:
+                inst_str.append(f"""<a href="{inst.link}">{inst.name_short}</a>""")
+            else:
+                inst_str.append(f"{inst.name_short}")
+        return ','.join(inst_str)
     def save(self, *args, **kwargs):
         self.album=Album.objects.get(name='astrophotos')
-        self.filename = self.image.url.split('/')[-1]
+        self.filename = self.image.url.split('/')[-1] 
+        self.inst_caption = 'Imaged with '+ self.instruments_to_str()+ '.'
+        #print(self.inst_caption)
         self.image='/'.join(self.image.url.split('/')[-2:])
-        self.link = f'https://www.dahlia.is/lost-in-space/{self.uid}'
+        self.link = f'https://www.dahlia.is/lost-in-space#&gid=1&pid={list(AstroPhoto.objects.all()).index(self)+1}'
         super(AstroPhoto, self).save(*args, **kwargs)
 class Post(models.Model):
     title = models.CharField(max_length=200)

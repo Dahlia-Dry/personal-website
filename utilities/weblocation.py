@@ -43,8 +43,12 @@ class webLocation(object):
             except:
                 raise Exception(f"Error at {self.name}:Location {address} not found :(")
             else:
-                self.address=loc.address
-                self.coords = (loc.latitude,loc.longitude)
+                if loc is not None:
+                    self.address=loc.address
+                    self.coords = (loc.latitude,loc.longitude)
+                else:
+                    self.address = address
+                    self.coords = coords
         elif coords is not None:
             try:
                 loc=geolocator.reverse(coords)
