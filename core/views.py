@@ -27,7 +27,10 @@ def home_view(request):
     return render(request, template_name, context)
 
 def custom_404(request, exception):
-    return render(request, 'pages_html/404.html', status=404)
+    context={}
+    context["header_content"] = 'lost?'
+    context["menu"] = MENU
+    return render(request, 'pages_html/404.html', context=context,status=404)
 
 def astrophoto_gallery(request):
     queryset = AstroPhoto.objects.all()
