@@ -19,11 +19,21 @@ endblock = ''.join(br[-2:])
 class webPage(object):
     def __init__(self,filepath):
         self.filepath = filepath
-        print(self.filepath)
+        print('processing ',self.filepath)
         self.post_type = self.filepath.split('/')[1]
         self.images = []
+        self.registered_html_commands = ['!block','!endblock','!pdf',
+                                         '!video','!gallery','!figs',
+                                         '!button','!linkbox','!text+img']
         self.meta,self.markdown= self._parse_meta()
         self.content=self._parse_content()
+    def _markdown_to_html(self,textblock):
+        #slightly modifies markdown.markdown() output
+        md = markdown.markdown(textblock)
+        md = md.replace('<a ','<a target=_blank ')
+        md = md.replace('<ul>','<ul class="u-text u-text-default u-text-2" style="font-size: 0.75rem;"> ')
+        
+        return md
     def _parse_meta(self):
         p = open(os.path.join(settings.BASE_DIR,self.filepath),'r')
         page =p.read()
@@ -39,12 +49,12 @@ class webPage(object):
             self.images.append(meta['cover_photo'])
         except Exception as e:
             print(e)
-            raise Exception('Post must have valid coverphoto specified.')
+            meta['cover_photo'] = None
         try:
             meta['location'] = Location.objects.get(name=meta['location'])
         except Exception as e:
             print(e)
-            raise Exception('Post must have valid location specified.')
+            meta['location']= None
         if meta['created_on'] == '!today':
             meta['created_on'] = time.strftime('%Y-%m-%d')
         meta['post_type'] = self.filepath.split('/')[1]
@@ -59,31 +69,25 @@ class webPage(object):
                 raise Exception('Error: parser could not decode key mappings. \
                                 Make sure all content is enclosed between __$KEY$__ and __END$KEY$__ tags.')
         for key in data:
-            contents =iter(data[key].split('\n'))
-            value = []
-            item = next(contents,None)
-            if item.startswith('!readjson'):
+            if data[key].startswith('!readjson'):
+                item = data[key].strip()
+                #parse to dict
                 data[key] = json.loads(open(os.path.join(settings.STATIC_ROOT,'assets',item.split(' ')[1].strip())).read())
-                print(data[key])
-            elif item.startswith('!python'):
+            elif data[key].startswith('!python'):
+                item = data[key].strip()
+                #parse to python 
                 data[key] = eval(item.split(' ')[1].strip())
             else:
+                contents =iter(data[key].split('\n'))
+                #parse to html str
+                value = []
+                item= next(contents,None)
                 while item is not None:
-                    if len(item) == 0:
-                        pass
-                    elif item.startswith('!block'):
+                    if item.startswith('!block'):
                         value.append(startblock)
                     elif item.startswith('!endblock'):
                         value.append(endblock)
-                    elif item.startswith('!linkbox'):
-                        text = ""
-                        headline = next(contents,'')
-                        item = next(contents,'')
-                        while not item.startswith('!link'):
-                            text += markdown.markdown(item)
-                            item = next(contents,'')
-                        link = item.strip().split(' ')[1]
-                        value.append(render_to_string('building_blocks/linkbox.html',{'text':text,'headline':headline,'link':link}))
+                    #one line commands
                     elif item.startswith('!pdf'):
                         value.append(render_to_string('building_blocks/pdf.html',{'pdf_file':item.split(' ')[1]}))
                     elif item.startswith('!video'):
@@ -94,22 +98,6 @@ class webPage(object):
                         photo_list = Photo.objects.filter(album=album)
                         self.images += photo_list
                         value.append(render_to_string('building_blocks/gallery.html',{'photo_list':photo_list}))
-                    elif item.startswith('!text+img'):
-                        text = ""
-                        item = next(contents,'')
-                        while not item.startswith('!img'):
-                            text += markdown.markdown(item)
-                            item = next(contents,'')
-                        kwargs = item.strip().split(' ')[1:]
-                        print(kwargs)
-                        img = webImage(kwargs[0])
-                        self.images.append(img.modelinstance)
-                        attrs = ['url','title','caption']
-                        if '--nocaption' in kwargs:
-                            attrs.remove('caption')
-                        if '--notitle' in kwargs:
-                            attrs.remove('title')
-                        value.append(render_to_string('building_blocks/text-img.html',{'text':text,'photo':img.to_dict(attrs)}))
                     elif item.startswith('!figs'):
                         kwargs = item.strip().split(' ')[1:]
                         paths = [i for i in kwargs if not i.startswith('--')]
@@ -123,13 +111,44 @@ class webPage(object):
                         template_file = f'building_blocks/{len(photos)}img.html'
                         value.append(render_to_string(template_file,{'photo_list':[p.to_dict(attrs) for p in photos]}))
                     elif item.startswith('!button'):
-                        text = next(contents,'').strip()
-                        link = next(contents,'').strip()
+                        link= item.split(' ')[1]
+                        text = ' '.join(item.split(' ')[2:])
                         value.append(render_to_string('building_blocks/button_centered.html',{'text':text,'link':link}))
-                    elif item.startswith('-'):
-                        value.append(render_to_string('building_blocks/bullet.html',{'bullet':item[1:]}))
+                    #text block commands
+                    elif item.startswith('!linkbox'):
+                        text = []
+                        headline = next(contents,'')
+                        item = next(contents,'')
+                        while not item.startswith('!link'):
+                            text.append(item)
+                            item = next(contents,'')
+                        link = item.strip().split(' ')[1]
+                        value.append(render_to_string('building_blocks/linkbox.html',{'text':self._markdown_to_html('\n'.join(text)),
+                                                                                      'headline':self._markdown_to_html(headline),
+                                                                                      'link':link}))
+                    elif item.startswith('!text+img'):
+                        text = []
+                        item = next(contents,'')
+                        while not item.startswith('!img'):
+                            text.append(item)
+                            item = next(contents,'')
+                        kwargs = item.strip().split(' ')[1:]
+                        img = webImage(kwargs[0])
+                        self.images.append(img.modelinstance)
+                        attrs = ['url','title','caption']
+                        if '--nocaption' in kwargs:
+                            attrs.remove('caption')
+                        if '--notitle' in kwargs:
+                            attrs.remove('title')
+                        value.append(render_to_string('building_blocks/text-img.html',{'text':self._markdown_to_html('\n'.join(text)),
+                                                                                       'photo':img.to_dict(attrs)}))
                     else:
-                        value.append(markdown.markdown(item))
+                        text = []
+                        while item is not None and not any([item.startswith(c) for c in self.registered_html_commands]):
+                            text.append(item)
+                            item = next(contents,None)
+                        value.append(self._markdown_to_html('\n'.join(text)))
+                        continue
                     item = next(contents,None)
                 data[key] = ''.join(value)
         return data

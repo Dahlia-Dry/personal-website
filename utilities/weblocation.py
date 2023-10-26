@@ -28,7 +28,6 @@ def dict_to_yaml(dict,fname= 'locations.yaml'):
             y.write(f'{attr} : {dict[name][attr]}\n')
         y.write('---\n')
     y.close()
-
 class webLocation(object):
     def __init__(self,name,address=None,coords=None):
         """
@@ -37,34 +36,41 @@ class webLocation(object):
         coords: tuple (lat,long) of location coordinates
         """
         self.name=name
+        self.yaml = yaml_to_dict()
         if address is not None:
-            try:
-                loc = geolocator.geocode(address)
-            except:
-                raise Exception(f"Error at {self.name}:Location {address} not found :(")
-            else:
-                if loc is not None:
-                    self.address=loc.address
-                    self.coords = (loc.latitude,loc.longitude)
+            self.address = address
+            if 'coords' not in self.yaml[self.name]:
+                try:
+                    loc = geolocator.geocode(address)
+                except:
+                    raise Exception(f"Error at {self.name}:Location {address} not found :(")
                 else:
-                    self.address = address
-                    self.coords = coords
+                    if loc is not None:
+                        self.address=loc.address
+                        self.coords = (loc.latitude,loc.longitude)
+                        self.yaml[self.name]['address'] = self.address
+                        self.yaml[self.name]['coords'] = self.coords
+                    else:
+                        self.coords = coords
         elif coords is not None:
-            try:
-                loc=geolocator.reverse(coords)
-            except:
-                raise Exception(f"Error at {self.name}:coords {coords} not found :(")
-            else:
-                self.address=loc
-                self.coords=coords
+            self.coords = coords
+            if 'address' not in self.yaml[self.name]:
+                try:
+                    loc=geolocator.reverse(coords)
+                except:
+                    raise Exception(f"Error at {self.name}:coords {coords} not found :(")
+                else:
+                    if loc is not None:
+                        self.address=loc
+                        self.yaml[self.name]['address']=self.address
         else:
             raise Exception('either coords or address must be specified.')
+        dict_to_yaml(self.yaml)
     def update_yaml(self,fname='locations.yaml'):
-        yaml = yaml_to_dict(fname)
-        yaml[self.name] = {}
-        yaml[self.name]['address'] =self.address
-        yaml[self.name]['coords'] =self.coords
-        dict_to_yaml(yaml,fname)
+        self.yaml[self.name] = {}
+        self.yaml[self.name]['address'] =self.address
+        self.yaml[self.name]['coords'] =self.coords
+        dict_to_yaml(self.yaml,fname)
         print(f'{fname} updated.')
     def register_as_Location(self):
         try:

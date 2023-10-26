@@ -15,9 +15,7 @@ text text whoooasdflkas [link](https://www.tegnology.dk)
 - more bullet ??
 !endblock
 
-!button 
-link here!
-https://www.tegnology.dk
+!button https://www.tegnology.dk link here!
 
 !gallery mos2
 

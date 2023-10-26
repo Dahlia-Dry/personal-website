@@ -2,3 +2,4 @@
 .vscode/
 .webenv/
 .DS_Store
+__pycache__/

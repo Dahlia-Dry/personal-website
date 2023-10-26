@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.views import generic
 from .models import *
+import copy
 from django.conf import settings
 
 import sys
@@ -9,13 +10,18 @@ sys.path.append('..')
 from utilities.webpage import *
 
 MENU= json.loads(open(os.path.join(settings.STATIC_ROOT,'assets/here/menu.json')).read())
+if settings.DEBUG:
+    host='http://127.0.0.1:8000' #localhost
+else:
+    host='https://www.dahlia.is'
+base_context = {'menu':MENU,'hostname':host}
 
 def redirect_home(request):
     response = redirect('/here')
     return response
 
 def root_view(request):
-    context ={}
+    context =copy.deepcopy(base_context)
     if not request.path.endswith('/'):
         post_type = request.path.split('/')[-1]
     else:
@@ -25,24 +31,26 @@ def root_view(request):
     template_dir = os.path.split(post_data.meta['html'])
     template_name = os.path.join(template_dir[0].split('/')[-1],template_dir[1])
     context["header_content"] = post_data.meta['post_type']
-    context["menu"] = MENU
     for key in post_data.content:
         context[key] = post_data.content[key]
     return render(request, template_name, context)
 
 def custom_404(request, exception):
-    context={}
+    context=copy.deepcopy(base_context)
     context["header_content"] = 'lost?'
-    context["menu"] = MENU
     return render(request, 'pages_html/404.html', context=context,status=404)
+
+def custom_500(request, exception):
+    context=copy.deepcopy(base_context)
+    context["header_content"] = 'lost?'
+    return render(request, 'pages_html/404.html', context=context,status=500)
 
 def astrophoto_gallery(request):
     queryset = AstroPhoto.objects.all()
     template_name = 'pages_html/lost-in-space.html'
-    context = {}
+    context = copy.deepcopy(base_context)
     context['photo_list'] = queryset
     context['header_content'] = 'lost-in-space'
-    context['menu'] = MENU
     return render(request,template_name,context)
 
 def detail_view(request,slug):
@@ -50,13 +58,12 @@ def detail_view(request,slug):
         slug = request.path.split('/')[-1]
     else:
         slug = request.path.split('/')[-2]
-    context ={}
+    context =copy.deepcopy(base_context)
     context["post"] = Post.objects.get(slug=slug)
     post_data = webPage(context['post'].content)
     template_dir = os.path.split(post_data.meta['html'])
     template_name = os.path.join(template_dir[0].split('/')[-1],template_dir[1])
     context["header_content"] = post_data.meta['post_type']
-    context["menu"] = MENU
     for key in post_data.content:
         context[key] = post_data.content[key]
     return render(request, template_name, context)
@@ -75,9 +82,8 @@ def list_view(request):
         except:
             post_pairs.append([queryset[i],None])
     template_name = 'building_blocks/post-list.html'
-    context = {}
+    context = copy.deepcopy(base_context)
     context["post_pairs"] = post_pairs
     context["header_content"] = post_type
-    context["menu"] = MENU
     return render(request,template_name,context)
 

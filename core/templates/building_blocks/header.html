@@ -19,8 +19,8 @@
           <div class="u-container-style u-layout-cell u-size-29 u-layout-cell-2">
             <div class="u-container-layout u-container-layout-2">
               <p class="u-align-center u-text u-text-white u-text-1">
-                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-white u-btn-1" href="https://www.dahlia.is/here">dahlia.is /</a>
-                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-white u-btn-1" href="https://www.dahlia.is/{{header_content}}" id="header-content">{{header_content}}</a>
+                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-white u-btn-1" href="{{hostname}}/here">dahlia.is /</a>
+                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-white u-btn-1" href="{{hostname}}/{{header_content}}" id="header-content">{{header_content}}</a>
               </p>
             </div>
           </div>
@@ -35,9 +35,9 @@
         </a>
       </div>
       <div class="u-custom-menu u-nav-container">
-        <ul class="u-nav u-spacing-20 u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-white" href="http://www.dahlia.is/here" style="padding: 10px;">home</a>
+        <ul class="u-nav u-spacing-20 u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-white" href="{{hostname}}/here" style="padding: 10px;">home</a>
           {% for item in menu %}
-          </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-white" href="https://www.dahlia.is/{{item.post_type}}" style="padding: 10px;">{{item.title}}</a>
+          </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-white" href="{{hostname}}/{{item.post_type}}" style="padding: 10px;">{{item.title}}</a>
           {% endfor %}
       </li></ul>
       </div>
@@ -45,9 +45,9 @@
         <div class="u-align-center u-container-style u-grey-75 u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
           <div class="u-inner-container-layout u-sidenav-overflow">
             <div class="u-menu-close"></div>
-            <ul class="u-align-center u-nav u-popupmenu-items u-spacing-44 u-text-active-palette-3-base u-text-hover-palette-4-base u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="http://www.dahlia.is/here">home</a>
+            <ul class="u-align-center u-nav u-popupmenu-items u-spacing-44 u-text-active-palette-3-base u-text-hover-palette-4-base u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{hostname}}/here">home</a>
             {% for item in menu %}
-                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="https://www.dahlia.is/{{item.post_type}}">{{item.title}}</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{hostname}}/{{item.post_type}}">{{item.title}}</a>
             {% endfor %}
             </li></ul>
           </div>
