@@ -1,0 +1,36 @@
+.collapsible {
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    background-color: #6e9785;
+    font-size:1.25rem;
+  }
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  .active, .collapsible:hover {
+    background-color: #638a79;
+  }
+
+  .collapsible:after {
+    content: '+'; /* Unicode character for "plus" sign (+) */
+    color: white;
+    float: right;
+    vertical-align: center;
+    margin-left: 5px;
+  }
+  
+  .active:after {
+    content: "-"; /* Unicode character for "minus" sign (-) */
+    color: white;
+  }
+  
+  /* Style the collapsible content. Note: hidden by default */
+  .collapsible_content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }

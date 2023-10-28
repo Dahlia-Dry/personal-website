@@ -8,7 +8,7 @@ from . import views
 
 MENU= json.loads(open(os.path.join(settings.STATIC_ROOT,'assets/here/menu.json')).read())
 
-root_views = ['here','in-the-news','lost-in-space','applying']
+root_views = ['here','in-the-news','lost-in-space','seeking-opportunities']
 list_views = ['currently','researching','making','on-a-bike']
 detail_views = ['currently','researching','making','on-a-bike']
 

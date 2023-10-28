@@ -1205,11 +1205,11 @@
     margin-bottom: 60px;
   }
 }.u-section-13 .u-sheet-1 {
-  min-height: 272px;
+  min-height: 282px;
 }
 
 .u-section-13 .u-group-1 {
-  min-height: 222px;
+  min-height: 242px;
   margin-top: 20px;
   margin-bottom: 20px;
   height: auto;
@@ -1224,7 +1224,7 @@
 }
 
 .u-section-13 .u-text-1 {
-  margin: 10px 7px;
+  margin: 10px 14px 10px 0;
 }
 
 @media (max-width: 1199px) {
@@ -1233,7 +1233,6 @@
   }
 
   .u-section-13 .u-text-1 {
-    margin-left: 0;
     margin-right: 0;
   }
 }

@@ -5,6 +5,7 @@ from django.template.loader import render_to_string
 import re
 import json
 from django.conf import settings
+import shlex
 
 from .webimage import *
 
@@ -32,7 +33,6 @@ class webPage(object):
         md = markdown.markdown(textblock)
         md = md.replace('<a ','<a target=_blank ')
         md = md.replace('<ul>','<ul class="u-text u-text-default u-text-2" style="font-size: 0.75rem;"> ')
-        
         return md
     def _parse_meta(self):
         p = open(os.path.join(settings.BASE_DIR,self.filepath),'r')
@@ -72,26 +72,44 @@ class webPage(object):
             if data[key].startswith('!readjson'):
                 item = data[key].strip()
                 #parse to dict
-                data[key] = json.loads(open(os.path.join(settings.STATIC_ROOT,'assets',item.split(' ')[1].strip())).read())
+                data[key] = json.loads(open(os.path.join(settings.STATIC_ROOT,'assets',shlex.split(item)[1])).read())
             elif data[key].startswith('!python'):
                 item = data[key].strip()
                 #parse to python 
-                data[key] = eval(item.split(' ')[1].strip())
+                data[key] = eval(shlex.split(item,posix=False)[1])
             else:
                 contents =iter(data[key].split('\n'))
                 #parse to html str
                 value = []
                 item= next(contents,None)
                 while item is not None:
+                    #block commands
                     if item.startswith('!block'):
                         value.append(startblock)
                     elif item.startswith('!endblock'):
                         value.append(endblock)
                     #one line commands
                     elif item.startswith('!pdf'):
-                        value.append(render_to_string('building_blocks/pdf.html',{'pdf_file':item.split(' ')[1]}))
+                        kwargs = shlex.split(item.strip())[1:]
+                        pdf_render = render_to_string('building_blocks/pdf.html',{'pdf_file':kwargs[0]})
+                        if '--collapsible' not in kwargs:
+                            value.append(pdf_render)
+                        else:
+                            context={'content':pdf_render}
+                            for i in range(1,len(kwargs)):
+                                if kwargs[i]=='--title':
+                                    context['title'] = kwargs[i+1]
+                                    i+=1
+                                elif kwargs[i]=='--link':
+                                    context['link'] = f"assets/{kwargs[0]}#navpanes=0"
+                                elif kwargs[i]=='--default':
+                                    #should be either 'visible' or 'collapsed'
+                                    context['default'] = kwargs[i+1]
+                                    i+=1
+                            print(context)
+                            value.append(render_to_string('building_blocks/collapsible.html',context))
                     elif item.startswith('!video'):
-                        value.append(render_to_string('building_blocks/video.html',{'video_file':item.split(' ')[1]}))
+                        value.append(render_to_string('building_blocks/video.html',{'video_file':shlex.split(item.strip())[1]}))
                     elif item.startswith('!gallery'):
                         album_name = item.split(' ')[1].strip()
                         album = Album.objects.get(name=album_name)
@@ -104,15 +122,16 @@ class webPage(object):
                         attrs = ['url','title','caption']
                         if '--nocaption' in kwargs:
                             attrs.remove('caption')
-                        elif '--notitle' in kwargs:
+                        if '--notitle' in kwargs:
                             attrs.remove('title')
                         photos = [webImage(p) for p in paths]
                         self.images += [p.modelinstance for p in photos]
                         template_file = f'building_blocks/{len(photos)}img.html'
                         value.append(render_to_string(template_file,{'photo_list':[p.to_dict(attrs) for p in photos]}))
                     elif item.startswith('!button'):
-                        link= item.split(' ')[1]
-                        text = ' '.join(item.split(' ')[2:])
+                        kwargs = shlex.split(item.strip())[1:]
+                        link= kwargs[0]
+                        text = kwargs[1]
                         value.append(render_to_string('building_blocks/button_centered.html',{'text':text,'link':link}))
                     #text block commands
                     elif item.startswith('!linkbox'):
@@ -124,7 +143,7 @@ class webPage(object):
                             item = next(contents,'')
                         link = item.strip().split(' ')[1]
                         value.append(render_to_string('building_blocks/linkbox.html',{'text':self._markdown_to_html('\n'.join(text)),
-                                                                                      'headline':self._markdown_to_html(headline),
+                                                                                      'headline':headline,
                                                                                       'link':link}))
                     elif item.startswith('!text+img'):
                         text = []
@@ -132,7 +151,7 @@ class webPage(object):
                         while not item.startswith('!img'):
                             text.append(item)
                             item = next(contents,'')
-                        kwargs = item.strip().split(' ')[1:]
+                        kwargs = shlex.split(item.strip())[1:]
                         img = webImage(kwargs[0])
                         self.images.append(img.modelinstance)
                         attrs = ['url','title','caption']

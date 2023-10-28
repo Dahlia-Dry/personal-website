@@ -1,0 +1,20 @@
+{% load static %}
+{% if default == "visible" %}
+{% if link %}
+<button type="button" class="collapsible active">{{title}}&nbsp;<a href="{% get_static_prefix %}{{link}}" target=_blank><i class="fa-solid fa-arrow-up-right-from-square fa-2xs" style="color:#92e4fd;"></i></a></button>
+{% else %}
+<button type="button" class="collapsible active">{{title}}</button>
+{% endif %}
+<div class="collapsible_content" style="max-height: 100%">
+    {{content|safe}}
+</div>
+{% else %}
+{% if link %}
+<button type="button" class="collapsible">{{title}}&nbsp;<a href="{% get_static_prefix %}{{link}}" target=_blank><i class="fa-solid fa-arrow-up-right-from-square fa-2xs" style="color:#92e4fd;"></i></a></button>
+{% else %}
+<button type="button" class="collapsible">{{title}}</button>
+{% endif %}
+<div class="collapsible_content">
+    {{content|safe}}
+</div>
+{% endif %}

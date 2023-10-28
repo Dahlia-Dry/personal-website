@@ -76,9 +76,13 @@ class webLocation(object):
         try:
             instance=Location.objects.get(name=self.name)
         except: #create new
-            instance=Location.objects.create(name=self.name,
-                                             lat=self.coords[0],long=self.coords[1],
-                                             address=self.address)
+            try:
+                instance=Location.objects.create(name=self.name,
+                                                lat=self.coords[0],long=self.coords[1],
+                                                address=self.address)
+            except:
+                instance=Location.objects.create(name=self.name,
+                                                address=self.address)
             instance.save()
             print(f"{self.name} added to Location db")
         return instance
