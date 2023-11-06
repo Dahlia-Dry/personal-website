@@ -1,4 +1,5 @@
 [{"post_type":"currently", "title": "current work"},
+{"post_type": "working", "title": "previous work"},
 {"post_type": "seeking-opportunities", "title": "resumé"},
 {"post_type": "researching", "title": "research portfolio"},
 {"post_type": "making", "title": "project portfolio"},

@@ -1,5 +1,5 @@
 ---
-title: Fabricating Thin Film Molybdenum Disulfide Transistors at MIT.nano
+title: Thin Film Molybdenum Disulfide Transistors
 slug: flexible-transistors-at-mit-nano
 cover_photo: mit-nano/mos2-cover.JPG
 created_on: 2023-12-07

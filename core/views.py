@@ -87,3 +87,17 @@ def list_view(request):
     context["header_content"] = post_type
     return render(request,template_name,context)
 
+def current_view(request):
+    queryset = Post.objects.filter(current=True).order_by('-created_on')
+    #reshape posts into side-by-side pairs
+    post_pairs = []
+    for i in range(0,len(queryset),2):
+        try:
+            post_pairs.append([queryset[i],queryset[i+1]])
+        except:
+            post_pairs.append([queryset[i],None])
+    template_name = 'building_blocks/post-list.html'
+    context = copy.deepcopy(base_context)
+    context["post_pairs"] = post_pairs
+    context["header_content"] = 'currently'
+    return render(request,template_name,context)

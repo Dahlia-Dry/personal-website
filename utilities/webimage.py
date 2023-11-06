@@ -14,8 +14,8 @@ class webImage(object):
             raise Exception(f'{self.album_name} does not exist.')
         self.modelinstance = self.register_as_Photo()
     def get_date_taken(self):
-        exif = Image.open(self.filepath)._getexif()
         try:
+            exif = Image.open(self.filepath)._getexif()
             date = exif[36867]
             return date.split(' ')[0].replace(':','-')
         except:

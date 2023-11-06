@@ -25,14 +25,16 @@ class Album(models.Model):
     name = models.CharField(max_length=200,unique=True)
     location = models.ForeignKey(Location, blank=True,null=True,on_delete=models.CASCADE)
     sync_location = models.BooleanField(default=True)
+    show_on_homepage = models.BooleanField(default=True)
     def save(self, *args, **kwargs):
         if not os.path.exists(f'media/{self.name}'):
             os.system(f'mkdir media/{self.name}')
-        if self.sync_location:
-            photos = Photo.objects.filter(album=self)
-            for photo in photos:
+        photos = Photo.objects.filter(album=self)
+        for photo in photos:
+            if self.sync_location:
                 photo.location = self.location
-                photo.save()
+            photo.show_on_homepage = self.show_on_homepage
+            photo.save()
         super(Album, self).save(*args, **kwargs)
     class Meta:
         ordering = ['name']

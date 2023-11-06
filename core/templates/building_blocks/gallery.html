@@ -11,10 +11,12 @@
             <div class="u-back-slide" data-image-width="1280" data-image-height="853">
               <img class="u-back-image u-expanded u-image-contain" src="{{photo_list.0.image.url}}">
             </div>
+            {% if show_info is True %}
             <div class="u-container-align-left u-over-slide u-palette-3-dark-1 u-valign-top-md u-valign-top-sm u-valign-top-xs u-over-slide-1">
               <h5 class="u-align-left u-gallery-heading" style="width: 1002px; margin-right: auto; margin-left: 0px;">{{photo_list.0.title}}</h5>
               <p class="u-align-left u-gallery-text" style="width: 1002px; margin-right: auto; margin-left: 0px; font-size: 0.75rem;">{{photo_list.0.created_on}} | {{photo_list.0.location.name}}</p>
             </div>
+            {% endif %}
             </div>
           {% for photo in photo_list %}
           {% if not forloop.first %}
@@ -22,11 +24,13 @@
             <div class="u-back-slide" data-image-width="1280" data-image-height="853">
               <img class="u-back-image u-expanded u-image-contain" src="{{photo.image.url}}">
             </div>
-<div class="u-container-align-left u-over-slide u-palette-3-dark-1 u-valign-top-md u-valign-top-sm u-valign-top-xs u-over-slide-1">
+            {% if show_info is True %}
+            <div class="u-container-align-left u-over-slide u-palette-3-dark-1 u-valign-top-md u-valign-top-sm u-valign-top-xs u-over-slide-1">
               <h5 class="u-align-left u-gallery-heading" style="width: 1002px; margin-right: auto; margin-left: 0px;">{{photo.title}}</h5>
               <p class="u-align-left u-gallery-text" style="width: 1002px; margin-right: auto; margin-left: 0px; font-size: 0.75rem;">{{photo.created_on}} | {{photo.location.name}} </p>
-          </div>
-</div>
+            </div>
+            {% endif %}
+        </div>
         {% endif %}
           {% endfor %}
         </div>

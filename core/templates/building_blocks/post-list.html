@@ -47,6 +47,7 @@
                   </div><!--/blog_post--><!--/post_details-->
                 </div>
               </div>
+              {% if post.1 is not None %}
               <div class="cell-temp-clone u-container-style u-layout-cell u-size-30 u-layout-cell-2" data-href="/{{post.1.post_type}}/{{post.1.slug}}">
                 <div class="u-container-layout u-valign-middle-md u-valign-middle-sm u-container-layout-3"><!--post_details--><!--post_details_options_json--><!--{"source":""}--><!--/post_details_options_json--><!--blog_post-->
                   <div class="u-align-left u-border-5 u-border-palette-3-base u-container-style u-expanded-width-md u-expanded-width-sm u-post-details u-radius-35 u-shape-round u-post-details-2">
@@ -63,6 +64,7 @@
                   </div><!--/blog_post--><!--/post_details-->
                 </div>
               </div>
+              {% endif %}
             </div>
             {% endfor %}
           </div>

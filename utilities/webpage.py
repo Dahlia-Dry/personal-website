@@ -109,13 +109,31 @@ class webPage(object):
                             print(context)
                             value.append(render_to_string('building_blocks/collapsible.html',context))
                     elif item.startswith('!video'):
-                        value.append(render_to_string('building_blocks/video.html',{'video_file':shlex.split(item.strip())[1]}))
+                        kwargs = shlex.split(item.strip())[1:]
+                        src= None
+                        for i in range(0,len(kwargs)):
+                            if kwargs[i]=='--file':
+                                src=kwargs[i+1]
+                                is_file=True
+                                src=kwargs[i+1]
+                            elif kwargs[i]=='--link':
+                                is_file=False
+                                src=kwargs[i+1]
+                        value.append(render_to_string('building_blocks/video.html',{'src':src,'is_file':is_file}))
                     elif item.startswith('!gallery'):
-                        album_name = item.split(' ')[1].strip()
+                        kwargs = item.strip().split(' ')[1:]
+                        album_name = kwargs[0]
                         album = Album.objects.get(name=album_name)
-                        photo_list = Photo.objects.filter(album=album)
+                        order_field='created_on'
+                        show_infobar=True
+                        for i in range(1,len(kwargs)):
+                            if kwargs[i]=='--order_by':
+                                order_field=kwargs[i+1]
+                            elif kwargs[i]=='--hide_infobar':
+                                show_infobar=False
+                        photo_list = Photo.objects.filter(album=album).order_by(order_field)
                         self.images += photo_list
-                        value.append(render_to_string('building_blocks/gallery.html',{'photo_list':photo_list}))
+                        value.append(render_to_string('building_blocks/gallery.html',{'photo_list':photo_list,'show_info':show_infobar}))
                     elif item.startswith('!figs'):
                         kwargs = item.strip().split(' ')[1:]
                         paths = [i for i in kwargs if not i.startswith('--')]
