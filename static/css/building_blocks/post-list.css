@@ -1,22 +1,17 @@
-.u-section-1 .u-sheet-1 {
-  min-height: 544px;
-}
+
 
 .u-section-1 .u-layout-wrap-1 {
   margin-top: 7px;
   margin-bottom: 20px;
 }
 
-.u-section-1 .u-layout-cell-1 {
-  min-height: 524px;
-}
 
 .u-section-1 .u-container-layout-1 {
   padding: 0;
 }
 
 .u-section-1 .u-post-details-1 {
-  min-height: 503px;
+  min-height: 440px;
   height: auto;
   width: 550px;
   margin: 10px auto 0;
@@ -28,7 +23,7 @@
 
 .u-section-1 .u-text-1 {
   font-weight: 700;
-  font-size: 1.875rem;
+  font-size: 1.2rem;
   margin: 0 0 0 5px;
 }
 
@@ -38,7 +33,7 @@
 }
 
 .u-section-1 .u-metadata-1 {
-  font-size: 1rem;
+  font-size: 0.7rem;
   margin: 20px 0 0 5px;
 }
 
@@ -47,16 +42,12 @@
   margin: 20px 0 0 5px;
 }
 
-.u-section-1 .u-layout-cell-2 {
-  min-height: 524px;
-}
-
 .u-section-1 .u-container-layout-3 {
   padding: 0;
 }
 
 .u-section-1 .u-post-details-2 {
-  min-height: 503px;
+  min-height: 440px;
   height: auto;
   width: 550px;
   margin: 10px auto 0;
@@ -68,7 +59,7 @@
 
 .u-section-1 .u-text-3 {
   font-weight: 700;
-  font-size: 1.875rem;
+  font-size: 1.2rem;
   margin: 0 0 0 5px;
 }
 
@@ -78,7 +69,7 @@
 }
 
 .u-section-1 .u-metadata-2 {
-  font-size: 1rem;
+  font-size: 0.7rem;
   margin: 20px 0 0 5px;
 }
 
@@ -88,17 +79,11 @@
 }
 
 @media (max-width: 1199px) {
-  .u-section-1 .u-sheet-1 {
-    min-height: 537px;
-  }
 
   .u-section-1 .u-layout-wrap-1 {
     margin-bottom: 24px;
   }
 
-  .u-section-1 .u-layout-cell-1 {
-    min-height: 529px;
-  }
 
   .u-section-1 .u-post-details-1 {
     width: 470px;
@@ -120,10 +105,6 @@
 
   .u-section-1 .u-text-2 {
     margin-left: 0;
-  }
-
-  .u-section-1 .u-layout-cell-2 {
-    min-height: 529px;
   }
 
   .u-section-1 .u-post-details-2 {
@@ -150,9 +131,6 @@
 }
 
 @media (max-width: 991px) {
-  .u-section-1 .u-sheet-1 {
-    min-height: 513px;
-  }
 
   .u-section-1 .u-layout-wrap-1 {
     margin-bottom: 0;
@@ -189,20 +167,17 @@
 }
 
 @media (max-width: 767px) {
-  .u-section-1 .u-sheet-1 {
-    min-height: 1055px;
-  }
 
   .u-section-1 .u-layout-wrap-1 {
     margin-bottom: 20px;
   }
 
   .u-section-1 .u-layout-cell-1 {
-    min-height: 544px;
+    min-height: 420px;
   }
 
   .u-section-1 .u-post-details-1 {
-    min-height: 491px;
+    min-height: 420px;
     margin-top: 20px;
     margin-right: initial;
     margin-left: initial;
@@ -231,13 +206,6 @@
 }
 
 @media (max-width: 575px) {
-  .u-section-1 .u-sheet-1 {
-    min-height: 716px;
-  }
-
-  .u-section-1 .u-layout-cell-1 {
-    min-height: 460px;
-  }
 
   .u-section-1 .u-post-details-1 {
     min-height: 411px;

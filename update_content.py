@@ -24,8 +24,11 @@ def update_locations():
     locobjs = Location.objects.all()
     for instance in locobjs:
         if instance.name not in locdata:
-            l = webLocation(name=instance.name,address=instance.address,coords=(instance.lat,instance.long))
-            l.update_yaml()
+            try:
+                l = webLocation(name=instance.name,address=instance.address,coords=(instance.lat,instance.long))
+                l.update_yaml()
+            except:
+                Location.delete(instance)
 
 def update_imgs():
     """
@@ -79,12 +82,22 @@ def update_posts():
     for p in posts:
         p.delete()
     #next, make a new post for every .md file in content subdirectories
+    fails = []
     for subdomain in content_gen:
         pages = [os.path.join(subdomain[0],i) for i in subdomain[2] if not i.startswith('.')]
         for p in pages:
-            wp = webPage(p)
-            instance = wp.register_as_Post()
-            print(f'Post added at http://127.0.0.1:8000/{instance.post_type}/{instance.slug}.')
+            try:
+                wp = webPage(p)
+                instance = wp.register_as_Post()
+                print(f'Post added at http://127.0.0.1:8000/{instance.post_type}/{instance.slug}.')
+            except:
+                print('failure at ',p)
+                #try again if fails (references other post)
+                fails.append(p)
+    for p in fails:
+        wp = webPage(p)
+        instance = wp.register_as_Post()
+        print(f'Post added at http://127.0.0.1:8000/{instance.post_type}/{instance.slug}.')
 
 def hard_reset():
     os.system('rm db.sqlite3')

@@ -25,7 +25,8 @@ class webPage(object):
         self.images = []
         self.registered_html_commands = ['!block','!endblock','!pdf',
                                          '!video','!gallery','!figs',
-                                         '!button','!linkbox','!text+img']
+                                         '!button','!linkbox','!text+img', 
+                                         '!text+gallery','!post-collection']
         self.meta,self.markdown= self._parse_meta()
         self.content=self._parse_content()
     def _markdown_to_html(self,textblock):
@@ -65,7 +66,7 @@ class webPage(object):
         for i in range(1,len(md),4):
             data[md[i]] = md[i+1].strip()
             if md[i+2] != 'END'+md[i]:
-                print(md)
+                #print(md)
                 raise Exception('Error: parser could not decode key mappings. \
                                 Make sure all content is enclosed between __$KEY$__ and __END$KEY$__ tags.')
         for key in data:
@@ -106,7 +107,6 @@ class webPage(object):
                                     #should be either 'visible' or 'collapsed'
                                     context['default'] = kwargs[i+1]
                                     i+=1
-                            print(context)
                             value.append(render_to_string('building_blocks/collapsible.html',context))
                     elif item.startswith('!video'):
                         kwargs = shlex.split(item.strip())[1:]
@@ -142,10 +142,14 @@ class webPage(object):
                             attrs.remove('caption')
                         if '--notitle' in kwargs:
                             attrs.remove('title')
+                        if '--cropfit' in kwargs:
+                            cropfit = True
+                        else:
+                            cropfit=False
                         photos = [webImage(p) for p in paths]
                         self.images += [p.modelinstance for p in photos]
                         template_file = f'building_blocks/{len(photos)}img.html'
-                        value.append(render_to_string(template_file,{'photo_list':[p.to_dict(attrs) for p in photos]}))
+                        value.append(render_to_string(template_file,{'photo_list':[p.to_dict(attrs) for p in photos],'cropfit':cropfit}))
                     elif item.startswith('!button'):
                         kwargs = shlex.split(item.strip())[1:]
                         link= kwargs[0]
@@ -179,6 +183,33 @@ class webPage(object):
                             attrs.remove('title')
                         value.append(render_to_string('building_blocks/text-img.html',{'text':self._markdown_to_html('\n'.join(text)),
                                                                                        'photo':img.to_dict(attrs)}))
+                    elif item.startswith('!text+gallery'):
+                        text = []
+                        item = next(contents,'')
+                        while not item.startswith('!album'):
+                            text.append(item)
+                            item = next(contents,'')
+                        kwargs = item.strip().split(' ')[1:]
+                        album_name = kwargs[0]
+                        album = Album.objects.get(name=album_name)
+                        order_field='?'
+                        for i in range(1,len(kwargs)):
+                            if kwargs[i]=='--order_by':
+                                order_field=kwargs[i+1]
+                        photo_list = Photo.objects.filter(album=album).order_by(order_field)
+                        self.images += photo_list
+                        value.append(render_to_string('building_blocks/text-gallery.html',{'text':self._markdown_to_html('\n'.join(text)),
+                                                                                       'gallery':photo_list}))
+                    elif item.startswith('!post-collection'):
+                        kwargs = shlex.split(item.strip())[1:]
+                        queryset = [Post.objects.get(slug=slug) for slug in kwargs]
+                        post_pairs = []
+                        for i in range(0,len(queryset),2):
+                            try:
+                                post_pairs.append([queryset[i],queryset[i+1]])
+                            except:
+                                post_pairs.append([queryset[i],queryset])
+                        value.append(render_to_string('building_blocks/post-collection.html',{'post_pairs':post_pairs}))
                     else:
                         text = []
                         while item is not None and not any([item.startswith(c) for c in self.registered_html_commands]):

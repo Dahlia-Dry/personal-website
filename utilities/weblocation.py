@@ -43,7 +43,7 @@ class webLocation(object):
                 try:
                     loc = geolocator.geocode(address)
                 except:
-                    raise Exception(f"Error at {self.name}:Location {address} not found :(")
+                    loc = None
                 else:
                     if loc is not None:
                         self.address=loc.address

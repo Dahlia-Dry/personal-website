@@ -3,7 +3,7 @@ title: Radio Spectroscopy of Active Galactic Nuclei
 slug: active-galactic-nuclei
 cover_photo: astro-research/ngc2992_animate.gif
 created_on: 2022-07-01
-location: Universidad Diego Portales - Santiago, Chile
+location: Universidad Diego Portales
 html: building_blocks/post-detail.html
 tags:
 current: True

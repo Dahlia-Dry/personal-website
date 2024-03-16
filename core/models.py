@@ -48,7 +48,7 @@ class Photo(models.Model):
     created_on = models.DateField()
     album = models.ForeignKey(Album,on_delete=models.CASCADE)
     filename = models.CharField(max_length=200,blank=True,null=True)
-    show_on_homepage = models.BooleanField(default=True)
+    show_on_homepage = models.BooleanField(default=False)
     link = models.CharField(default='https://www.dahlia.is/here',max_length=200,blank=True,null=True)
     def save(self, *args, **kwargs):
         self.filename = self.image.url.split('/')[-1]

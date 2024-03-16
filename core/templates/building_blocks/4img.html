@@ -4,7 +4,11 @@
         <div class="u-gallery-inner u-gallery-inner-1">
           <div class="u-effect-hover-zoom u-gallery-item">
             <div class="u-back-slide">
-              <img class="u-back-image u-expanded u-image-contain" src="{{photo_list.0.url}}">
+              {% if cropfit %}
+                <img class="u-back-image u-expanded" src="{{photo_list.0.url}}">
+              {% else %}
+                <img class="u-back-image u-expanded u-image-contain" src="{{photo_list.0.url}}">
+              {% endif %}
             </div>
             <div class="u-over-slide u-shading u-over-slide-1">
                 <h3 class="u-gallery-heading">{{photo_list.0.title}}</h3>
@@ -13,7 +17,11 @@
           </div>
           <div class="u-effect-hover-zoom u-gallery-item">
             <div class="u-back-slide">
-              <img class="u-back-image u-expanded u-image-contain" src="{{photo_list.1.url}}">
+              {% if cropfit %}
+                <img class="u-back-image u-expanded" src="{{photo_list.1.url}}">
+              {% else %}
+                <img class="u-back-image u-expanded u-image-contain" src="{{photo_list.1.url}}">
+              {% endif %}
             </div>
             <div class="u-over-slide u-shading u-over-slide-2">
                 <h3 class="u-gallery-heading">{{photo_list.1.title}}</h3>
@@ -22,7 +30,11 @@
           </div>
           <div class="u-effect-hover-zoom u-gallery-item">
             <div class="u-back-slide">
-              <img class="u-back-image u-expanded u-image-contain" src="{{photo_list.2.url}}">
+              {% if cropfit %}
+                <img class="u-back-image u-expanded" src="{{photo_list.2.url}}">
+              {% else %}
+                <img class="u-back-image u-expanded u-image-contain" src="{{photo_list.2.url}}">
+              {% endif %}
             </div>
             <div class="u-over-slide u-shading u-over-slide-3">
                 <h3 class="u-gallery-heading">{{photo_list.2.title}}</h3>
@@ -31,7 +43,11 @@
           </div>
           <div class="u-effect-hover-zoom u-gallery-item">
             <div class="u-back-slide">
-              <img class="u-back-image u-expanded u-image-contain" src="{{photo_list.3.url}}">
+              {% if cropfit %}
+                <img class="u-back-image u-expanded" src="{{photo_list.3.url}}">
+              {% else %}
+                <img class="u-back-image u-expanded u-image-contain" src="{{photo_list.3.url}}">
+              {% endif %}
             </div>
             <div class="u-over-slide u-shading u-over-slide-4">
                 <h3 class="u-gallery-heading">{{photo_list.3.title}}</h3>
