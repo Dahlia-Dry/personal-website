@@ -29,7 +29,7 @@ if DEBUG is False:
     PREPEND_WWW=True
 
 ALLOWED_HOSTS = ['.dahlia.is',
-                 '.webapp-1551455.pythonanywhere.com',
+                 '.webapp-2044845.pythonanywhere.com',
                  '.dahliadry.pythonanywhere.com',
                  '127.0.0.1']
 
