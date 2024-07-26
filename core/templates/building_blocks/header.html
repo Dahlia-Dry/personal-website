@@ -1,0 +1,55 @@
+{% block header %}
+<body class="u-body u-stick-footer u-xl-mode" data-lang="en"><header class="u-align-center-xs u-border-1 u-border-grey-25 u-clearfix u-container-align-center u-header u-palette-3-base u-sticky u-sticky-02bc u-header" id="sec-cdb2"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+  <div class="data-layout-selected u-align-center u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
+    <div class="u-layout">
+      <div class="u-layout-row">
+        <div class="u-container-align-center u-container-style u-layout-cell u-size-11 u-layout-cell-1">
+          <div class="u-container-layout u-valign-middle u-container-layout-1">
+          </div>
+        </div>
+          <div class="u-container-align-center u-container-style u-layout-cell u-size-38 u-layout-cell-2">
+            <div class="u-container-layout u-valign-middle u-container-layout-2">
+              <p class="u-align-center u-text u-text-white u-text-1">
+                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-white u-btn-1" href="{{hostname}}/here">dahlia.is /</a>
+                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-white u-btn-1" href="{{hostname}}/{{header_content}}" id="header-content">{{header_content}}</a>
+              </p>
+            </div>
+          </div>
+          <div class="u-container-align-center u-container-style u-layout-cell u-size-11 u-layout-cell-3">
+            <div class="u-container-layout u-valign-middle u-container-layout-3">
+              <nav class="u-align-center u-font-size-14 u-menu u-menu-hamburger u-nav-spacing-25 u-offcanvas u-menu-1" data-responsive-from="XL">
+                <div class="menu-collapse">
+                  <a class="u-button-style u-custom-text-color u-nav-link u-text-white" href="#" style="font-size: calc(1em + 18px); padding: 9px 8px;">
+                    <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 302 302" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-7b92"></use></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg-7b92" x="0px" y="0px" viewBox="0 0 302 302" style="enable-background:new 0 0 302 302;" xml:space="preserve" class="u-svg-content"><g><rect y="36" width="302" height="30"></rect><rect y="236" width="302" height="30"></rect><rect y="136" width="302" height="30"></rect>
+</g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+                  </a>
+                </div>
+      <div class="u-custom-menu u-nav-container">
+        <ul class="u-nav u-spacing-20 u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-white" href="{{hostname}}/here" style="padding: 10px;">home</a>
+          {% for item in menu %}
+          </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-white" href="{{hostname}}/{{item.post_type}}" style="padding: 10px;">{{item.title}}</a>
+          {% endfor %}
+      </li></ul>
+      </div>
+      <div class="u-custom-menu u-nav-container-collapse">
+        <div class="u-align-center u-container-style u-grey-75 u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+          <div class="u-inner-container-layout u-sidenav-overflow">
+            <div class="u-menu-close"></div>
+            <ul class="u-align-center u-nav u-popupmenu-items u-spacing-44 u-text-active-palette-3-base u-text-hover-palette-4-base u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{hostname}}/here">home</a>
+            {% for item in menu %}
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{hostname}}/{{item.post_type}}">{{item.title}}</a>
+            {% endfor %}
+            </li></ul>
+          </div>
+        </div>
+        <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+      </div>
+    </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div></header>
+  {% endblock header %}

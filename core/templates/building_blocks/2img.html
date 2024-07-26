@@ -1,0 +1,35 @@
+{% load static %}
+<section class="u-clearfix u-container-align-center u-palette-2-base u-section-7">
+  <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+    <div class="u-expanded-width u-gallery u-layout-grid u-lightbox u-no-transition u-show-text-on-hover u-gallery-1">
+      <div class="u-gallery-inner u-gallery-inner-1">
+        <div class="u-effect-fade u-effect-hover-zoom u-gallery-item">
+          <div class="u-back-slide">
+            {% if cropfit %}
+              <img class="u-back-image u-expanded" src="{{photo_list.0.url}}">
+            {% else %}
+              <img class="u-back-image u-expanded u-image-contain" src="{{photo_list.0.url}}">
+            {% endif %}
+          </div>
+          <div class="u-over-slide u-shading u-over-slide-1">
+          <h3 class="u-gallery-heading">{{photo_list.0.title}}</h3>
+          <p class="u-gallery-text">{{photo_list.0.caption}}</p>
+        </div>
+      </div>
+      <div class="u-effect-fade u-effect-hover-zoom u-gallery-item">
+        <div class="u-back-slide">
+            {% if cropfit %}
+              <img class="u-back-image u-expanded" src="{{photo_list.1.url}}">
+            {% else %}
+              <img class="u-back-image u-expanded u-image-contain" src="{{photo_list.1.url}}">
+            {% endif %}
+        </div>
+        <div class="u-over-slide u-shading u-over-slide-2">
+          <h3 class="u-gallery-heading">{{photo_list.1.title}}</h3>
+          <p class="u-gallery-text">{{photo_list.1.caption}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>

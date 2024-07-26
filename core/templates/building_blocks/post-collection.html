@@ -1,0 +1,49 @@
+{% load static %}
+<link rel="stylesheet" href="{% static '/css/building_blocks/post-list.css' %}" media="screen">
+<section class="u-clearfix u-container-align-center u-palette-2-base u-section-1" id="sec-8fa9">
+    <div class="u-clearfix u-sheet u-valign-middle-md u-sheet-1">
+      <div class="u-clearfix u-expanded-width u-gutter-16 u-layout-wrap u-layout-wrap-1">
+        <div class="u-layout">
+          {% for post in post_pairs %}
+          <div class="u-layout-row">
+            <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2" data-href="/{{post.0.post_type}}/{{post.0.slug}}">
+              <div class="u-container-layout u-valign-middle-md u-container-layout-1"><!--post_details--><!--post_details_options_json--><!--{"source":""}--><!--/post_details_options_json--><!--blog_post-->
+                <div class="u-align-left u-border-5 u-border-palette-3-base u-container-style u-expanded-width-sm u-expanded-width-xs u-post-details u-radius-35 u-shape-round u-post-details-1">
+                  <div class="u-container-layout u-valign-center u-container-layout-2"><!--blog_post_header-->
+                    <h2 class="u-blog-control u-text u-text-1">
+                      <a class="u-post-header-link"><!--blog_post_header_content-->{{post.0.title}}<!--/blog_post_header_content--></a>
+                    </h2><!--/blog_post_header--><!--blog_post_image-->
+                    <img class="u-blog-control u-expanded-width u-image u-image-1" src="{{post.0.cover_photo.image.url}}"><!--/blog_post_image--><!--blog_post_metadata-->
+                    <div class="u-blog-control u-metadata u-text-grey-30 u-metadata-1"><!--blog_post_metadata_date-->
+                      <span class="u-meta-date u-meta-icon"><!--blog_post_metadata_date_content-->{{post.0.created_on}} | {{post.0.location.name}}<!--/blog_post_metadata_date_content--></span><!--/blog_post_metadata_date--><!--blog_post_metadata_category-->
+                    </div><!--/blog_post_metadata--><!--blog_post_content-->
+                    <div class="u-align-justify u-blog-control u-post-content u-text u-text-2"><!--blog_post_content_content-->{{post.0.summary}}<!--/blog_post_content_content--></div><!--/blog_post_content-->
+                  </div>
+                </div><!--/blog_post--><!--/post_details-->
+              </div>
+            </div>
+            {% if post.1 is not None %}
+            <div class="cell-temp-clone u-container-style u-layout-cell u-size-30 u-layout-cell-2" data-href="/{{post.1.post_type}}/{{post.1.slug}}">
+              <div class="u-container-layout u-valign-middle-md u-valign-middle-sm u-container-layout-3"><!--post_details--><!--post_details_options_json--><!--{"source":""}--><!--/post_details_options_json--><!--blog_post-->
+                <div class="u-align-left u-border-5 u-border-palette-3-base u-container-style u-expanded-width-md u-expanded-width-sm u-post-details u-radius-35 u-shape-round u-post-details-2">
+                  <div class="u-container-layout u-valign-center u-container-layout-4"><!--blog_post_header-->
+                    <h2 class="u-blog-control u-text u-text-3">
+                      <a class="u-post-header-link" ><!--blog_post_header_content-->{{post.1.title}}<!--/blog_post_header_content--></a>
+                    </h2><!--/blog_post_header--><!--blog_post_image-->
+                    <img class="u-blog-control u-expanded-width u-image u-image-2" src="{{post.1.cover_photo.image.url}}"><!--/blog_post_image--><!--blog_post_metadata-->
+                    <div class="u-blog-control u-metadata u-text-grey-30 u-metadata-2"><!--blog_post_metadata_date-->
+                      <span class="u-meta-date u-meta-icon"><!--blog_post_metadata_date_content-->{{post.1.created_on}} | {{post.1.location.name}}<!--/blog_post_metadata_date_content--></span><!--/blog_post_metadata_date--><!--blog_post_metadata_category-->
+                    </div><!--/blog_post_metadata--><!--blog_post_content-->
+                    <div class="u-align-justify u-blog-control u-post-content u-text u-text-4"><!--blog_post_content_content-->{{post.1.summary}}<!--/blog_post_content_content--></div><!--/blog_post_content-->
+                  </div>
+                </div><!--/blog_post--><!--/post_details-->
+              </div>
+            </div>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    
+  </section>

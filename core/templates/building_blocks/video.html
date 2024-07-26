@@ -1,0 +1,17 @@
+{% load static %}
+<section class="u-clearfix u-container-align-center u-section-9">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <div class="u-align-left u-expanded-width u-hover-feature u-left-0 u-video u-video-contain u-video-1">
+        {% if is_file %}
+        <div class="embed-responsive embed-responsive-1">
+          <iframe style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;" class="embed-responsive-item" src="{% get_static_prefix %}assets/{{src}}" frameborder="0" allowfullscreen=""></iframe>
+        </div>
+        {% else %}
+        <div class="embed-responsive embed-responsive-1">
+          <iframe style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;" src="{{src|safe}}" frameborder="0" allowfullscreen=""></iframe>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+</section>
+

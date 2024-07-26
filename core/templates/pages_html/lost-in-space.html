@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="font-size: 24px;" lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Astrophotography">
+    <meta name="description" content="">
+    <title>lost-in-space</title>
+    <link rel="stylesheet" href="{% static 'css/building_blocks/nicepage.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static '/css/building_blocks/page-template.css' %}" media="screen">
+    <script class="u-script" type="text/javascript" src="{% static '/js/jquery.js' %}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{% static '/js/nicepage.js' %}" defer=""></script>
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i">
+    
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": ""
+}</script>
+    <meta name="theme-color" content="#73a3de">
+    <meta property="og:title" content="lost-in-space">
+    <meta property="og:type" content="website">
+  </head>
+  <body class="u-body u-xl-mode" data-lang="en">
+    {% block header %} {% include 'building_blocks/header.html' %} {% endblock header %}
+<section class="u-align-center u-clearfix u-container-align-center u-palette-2-base u-section-4">
+  <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <div class="u-align-center u-carousel u-expanded-width-sm u-expanded-width-xs u-gallery u-layout-carousel u-lightbox u-no-transition u-show-text-always u-gallery-1" data-interval="5000" data-u-ride="carousel" id="carousel-c442">
+        <ol class="u-absolute-hcenter u-carousel-indicators u-hidden u-carousel-indicators-1">
+          <li data-u-target="#carousel-c442" data-u-slide-to="0" class="u-active u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+          <li data-u-target="#carousel-c442" data-u-slide-to="1" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+        </ol>
+        <div class="u-carousel-inner u-gallery-inner" role="listbox">
+          <div class="u-active u-carousel-item u-gallery-item u-shape-rectangle">
+            <div class="u-back-slide" data-image-width="1280" data-image-height="853">
+              <img class="u-back-image u-expanded u-image-contain" src="{{photo_list.0.image.url}}">
+            </div>
+            <div class="u-container-align-left u-over-slide u-palette-3-dark-1 u-valign-top-md u-valign-top-sm u-valign-top-xs u-over-slide-1">
+              <h5 class="u-align-left u-gallery-heading" style="width: 1002px; margin-right: auto; margin-left: 0px;">{{photo_list.0.title}}</h5>
+              <p class="u-align-left u-gallery-text" style="width: 1002px; margin-right: auto; margin-left: 0px; font-size: 0.75rem;">{{photo_list.0.created_on}} | {{photo_list.0.location.name}} | {% if photo_list.0.info_link != "" %} <a href="{{photo_list.0.info_link}}" target="_blank"> {{photo_list.0.catalog_name}} {% endif %}</a></p>
+              <p class="u-align-left u-gallery-text" style="width: 1002px; margin-right: auto; margin-left: 0px;">{{photo_list.0.caption|safe}} {{photo_list.0.inst_caption|safe}}</p>
+            </div>
+            </div>
+          {% for photo in photo_list %}
+          {% if not forloop.first %}
+          <div class="u-carousel-item u-gallery-item u-shape-rectangle">
+            <div class="u-back-slide" data-image-width="1280" data-image-height="853">
+              <img class="u-back-image u-expanded u-image-contain" src="{{photo.image.url}}">
+            </div>
+            <div class="u-container-align-left u-over-slide u-palette-3-dark-1 u-valign-top-md u-valign-top-sm u-valign-top-xs u-over-slide-1">
+              <h5 class="u-align-left u-gallery-heading" style="width: 1002px; margin-right: auto; margin-left: 0px;">{{photo.title}}</h5>
+              <p class="u-align-left u-gallery-text" style="width: 1002px; margin-right: auto; margin-left: 0px; font-size: 0.75rem;">{{photo.created_on}} | {{photo.location.name}} {% if photo.info_link != "" %} | <a href="{{photo.info_link}}" target="_blank"> {{photo.catalog_name}} {% endif %}</a></p>
+              <p class="u-align-left u-gallery-text" style="width: 1002px; margin-right: auto; margin-left: 0px;">{{photo.caption|safe}}{{photo.inst_caption|safe}}</p>
+          </div>
+        </div>
+        {% endif %}
+          {% endfor %}
+        </div>
+        <a class="u-absolute-vcenter u-carousel-control u-carousel-control-prev u-grey-70 u-icon-circle u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-1" href="#carousel-c442" role="button" data-u-slide="prev">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+          </span>
+          <span class="sr-only">
+            <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+          </span>
+        </a>
+        <a class="u-absolute-vcenter u-carousel-control u-carousel-control-next u-grey-70 u-icon-circle u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-2" href="#carousel-c442" role="button" data-u-slide="next">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+          </span>
+          <span class="sr-only">
+            <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+  {% block footer %} {% include 'building_blocks/footer.html' %} {% endblock footer %}
+  
+</body></html>

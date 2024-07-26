@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="font-size: 24px;" lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="post-list">
+    <meta name="description" content="">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'css/building_blocks/nicepage.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'css/building_blocks/page-template.css' %}" media="screen">
+    <script class="u-script" type="text/javascript" src="{% static '/js/jquery.js' %}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{% static '/js/nicepage.js' %}" defer=""></script>
+    <link rel="stylesheet" href="{% static 'css/building_blocks/collapsible.css' %}" media="screen">
+    <script class="u-script" type="text/javascript" src="{% static '/js/collapsible.js' %}" defer=""></script>
+    <script src="https://kit.fontawesome.com/87831ede3e.js" crossorigin="anonymous"></script>
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i">
+    
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": ""
+}</script>
+    <meta name="theme-color" content="#73a3de">
+    <meta property="og:type" content="website">
+  </head>
+
+  <body class="u-body u-xl-mode" data-lang="en">
+    {% block header %} {% include 'building_blocks/header.html' %} {% endblock header %}
+    <section class="u-clearfix u-section-1" id="sec-284b">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout">
+            <div class="u-layout-col">
+              <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-1">
+                <div class="u-container-layout u-container-layout-1">
+                  <h1>{{post.title}}</h1>
+                </div>
+              </div>
+              <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">
+                <div class="u-container-layout u-valign-top-sm u-valign-top-xs u-container-layout-2">
+                  <p class="u-text u-text-default u-text-3"><span class="u-icon"><svg class="u-svg-content" viewBox="0 0 54.757 54.757" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M40.94,5.617C37.318,1.995,32.502,0,27.38,0c-5.123,0-9.938,1.995-13.56,5.617c-6.703,6.702-7.536,19.312-1.804,26.952
+	L27.38,54.757L42.721,32.6C48.476,24.929,47.643,12.319,40.94,5.617z M27.557,26c-3.859,0-7-3.141-7-7s3.141-7,7-7s7,3.141,7,7
+	S31.416,26,27.557,26z"></path></svg><img></span>&nbsp;<span style="font-style: italic;">{{post.location.name}}</span> | {{post.created_on}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="u-border-1 u-border-white u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-line u-line-horizontal u-line-1"></div>
+      </div>
+    </section>
+      {{CONTENT|safe}}
+    {% block footer %} {% include 'building_blocks/footer.html' %} {% endblock footer %}
+  
+</html>
