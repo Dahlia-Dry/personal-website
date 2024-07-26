@@ -111,9 +111,9 @@ def fetch_media():
     media_url = "https://drive.google.com/drive/u/0/folders/1K_WCuWkBunv-597s-7FWuwXcqWR8rZR8"
     asset_url = "https://drive.google.com/drive/u/0/folders/1TLK9W-ETWDIz1IaXmCN5VCjFOuCKNaYf"
     print("downloading media...")
-    gdown.download_folder(media_url, quiet=True, use_cookies=False)
+    gdown.download_folder(media_url, quiet=True, use_cookies=False,remaining_ok=True)
     print("downloading assets...")
-    gdown.download_folder(asset_url, quiet=True, use_cookies=False)
+    gdown.download_folder(asset_url, quiet=True, use_cookies=False,remaining_ok=True)
     os.system('rm -rf static/assets')
     os.system('mv assets static/assets')
 
