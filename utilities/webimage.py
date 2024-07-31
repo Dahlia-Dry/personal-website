@@ -30,11 +30,14 @@ class webImage(object):
         except Exception as e:
             #print(e)
             if self.album_name == 'astrophotos':
+                print('creating ',self.filename.split('.')[0])
                 instance =AstroPhoto.objects.create(title=self.filename.split('.')[0],
                                             image=self.filepath,
                                             location = self.album.location,
                                             album=self.album,
                                             created_on=self.get_date_taken())
+                instance.save()
+                instance.link = f'https://www.dahlia.is/lost-in-space#&gid=1&pid={list(AstroPhoto.objects.all()).index(instance)+1}'
                 instance.save()
                 print(f'created new AstroPhoto {instance.title}')
             else:

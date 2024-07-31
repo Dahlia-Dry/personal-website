@@ -25,7 +25,8 @@ class Album(models.Model):
     name = models.CharField(max_length=200,unique=True)
     location = models.ForeignKey(Location, blank=True,null=True,on_delete=models.CASCADE)
     sync_location = models.BooleanField(default=True)
-    show_on_homepage = models.BooleanField(default=True)
+    show_on_homepage = models.BooleanField(default=False)
+    link = models.CharField(default='https://www.dahlia.is/here',max_length=200,blank=True,null=True)
     def save(self, *args, **kwargs):
         if not os.path.exists(f'media/{self.name}'):
             os.system(f'mkdir media/{self.name}')
@@ -49,10 +50,10 @@ class Photo(models.Model):
     album = models.ForeignKey(Album,on_delete=models.CASCADE)
     filename = models.CharField(max_length=200,blank=True,null=True)
     show_on_homepage = models.BooleanField(default=False)
-    link = models.CharField(default='https://www.dahlia.is/here',max_length=200,blank=True,null=True)
     def save(self, *args, **kwargs):
         self.filename = self.image.url.split('/')[-1]
         self.image='/'.join(self.image.url.split('/')[-2:])
+        self.show_on_homepage = self.album.show_on_homepage
         if os.path.exists(f'media/temp/{self.filename}'):
             os.system(f'mv media/temp/{self.filename} media/{self.album.name}/{self.filename}')
             self.image=f'{self.album.name}/{self.filename}'
@@ -84,12 +85,14 @@ class AstroPhoto(Photo):
     def save(self, *args, **kwargs):
         self.album=Album.objects.get(name='astrophotos')
         self.filename = self.image.url.split('/')[-1] 
-        self.inst_caption = 'Imaged with '+ self.instruments_to_str()+ '.'
+        try:
+            self.inst_caption = 'Imaged with '+ self.instruments_to_str()+ '.'
+        except:
+            self.inst_caption = ""
         #print(self.inst_caption)
         self.image='/'.join(self.image.url.split('/')[-2:])
-        self.link = f'https://www.dahlia.is/lost-in-space#&gid=1&pid={list(AstroPhoto.objects.all()).index(self)+1}'
-        print(self.link)
         super(AstroPhoto, self).save(*args, **kwargs)
+        
 class Post(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True,blank=True,null=True)
