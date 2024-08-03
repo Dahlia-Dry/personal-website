@@ -24,7 +24,7 @@ class webPage(object):
         self.post_type = self.filepath.split('/')[1]
         self.images = []
         self.registered_html_commands = ['!block','!endblock','!pdf',
-                                         '!video','!gallery','!figs',
+                                         '!video','!audio','!gallery','!figs',
                                          '!button','!linkbox','!text+img', 
                                          '!text+gallery','!post-collection']
         self.meta,self.markdown= self._parse_meta()
@@ -119,6 +119,10 @@ class webPage(object):
                                 is_file=False
                                 src=kwargs[i+1]
                         value.append(render_to_string('building_blocks/video.html',{'src':src,'is_file':is_file}))
+                    elif item.startswith('!audio'):
+                        kwargs = item.strip().split(' ')[1:]
+                        src = kwargs[0]
+                        value.append(render_to_string('building_blocks/audio.html',{'src':src}))
                     elif item.startswith('!gallery'):
                         kwargs = item.strip().split(' ')[1:]
                         album_name = kwargs[0]

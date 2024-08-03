@@ -1,0 +1,17 @@
+{% load static %}
+<audio controls="controls">
+    <source src="{% get_static_prefix %}assets/{{src}}" type="audio/mp4">
+</audio>
+<script>
+    const audio = document.querySelector("audio");
+    const playButton = document.getElementById("play-button");
+    const pauseButton = document.getElementById("pause-button");
+
+    playButton.addEventListener("click", () => {
+        audio.play();
+    });
+
+    pauseButton.addEventListener("click", () => {
+        audio.pause();
+    });
+</script>
