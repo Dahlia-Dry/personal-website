@@ -205,7 +205,12 @@ class webPage(object):
                                                                                        'gallery':photo_list}))
                     elif item.startswith('!post-collection'):
                         kwargs = shlex.split(item.strip())[1:]
-                        queryset = [Post.objects.get(slug=slug) for slug in kwargs]
+                        queryset = []
+                        for slug in kwargs:
+                            try:
+                                queryset.append(Post.objects.get(slug=slug))
+                            except:
+                                print(slug,' not found')
                         post_pairs = []
                         for i in range(0,len(queryset),2):
                             try:
