@@ -48,7 +48,7 @@ The radar said that the rain would pass, eventually. Key word, eventually. As th
 !img roskilde-fjord/day2-8.JPG --nocaption --notitle
 Alas, it didn't come _soon_, per se. Patience is a virtue. I tried to think happy thoughts, like "hey, nice view!", and "later I will eat ice cream under a blue sky" and "well, at least I don't have to put on sunscreen yet!". I passed a christmas tree farm with some cool little bird-kite looking things. 
 !figs roskilde-fjord/day2-9.JPG roskilde-fjord/day2-11.JPG roskilde-fjord/day2-10.JPG --nocaption --notitle
-And, sure enough, the rain didn't last forever. The clouds began to clear just as I got to the top of a hill with a stunning view -- a wide open field carpeted with wildflowers, swaying gently in the wind as sunbeams began to peak through the gray sky.
+And, sure enough, the rain didn't last forever. The clouds began to clear just as I got to the top of a hill with a stunning view -- a wide open field carpeted with wildflowers, swaying gently in the wind as sunbeams began to peek through the gray sky.
 !figs roskilde-fjord/day2-12.JPG roskilde-fjord/day2-13.JPG --nocaption --notitle
 The weather only got better from there. After a little ways further the route joined up with the northern coastline of Sjælland, beginning a second half of the day filled with sunshine and beaches and gentle breeze; before I knew it I was dry again and the cold, wet morning felt like a distant memory.
 !figs roskilde-fjord/day2-14.JPG roskilde-fjord/day2-15.JPG roskilde-fjord/day2-16.JPG --nocaption --notitle
