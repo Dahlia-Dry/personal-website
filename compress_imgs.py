@@ -10,4 +10,4 @@ def compress_folder(folder):
             foo = Image.open(p)
             foo.save(p, optimize=True, quality=85) 
 
-compress_folder('santiago')
+compress_folder('foldy-with-max')
