@@ -3,6 +3,7 @@ import json
 import copy
 from core.models import *
 from django.conf import settings
+from django.views.generic.base import TemplateView
 
 from . import views
 
