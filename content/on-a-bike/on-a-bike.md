@@ -23,7 +23,7 @@ A friend once sent me this lovely doodle to the right from a [post](https://www.
 
 ## Ride Logs
 ### In Europe
-!post-collection with-a-brompton-buddy to-the-netherlands roskilde-fjord tour-de-trolls-syd tour-de-trolls-sjaelland 
+!post-collection to-the-netherlands roskilde-fjord tour-de-trolls-syd tour-de-trolls-sjaelland 
 ### In South America
 !post-collection santiago-valparaiso-century in-santiago
 ### In North America
